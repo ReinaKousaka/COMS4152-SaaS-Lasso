@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+events = [{:title => 'Films on Furnald: The Lion King', :category => "culture", :organizer => "Film Society", :location => "Furnald Lawn"},
+
+  	 ]
+
+events.each do |event|
+  Event.create!(event)
+end
