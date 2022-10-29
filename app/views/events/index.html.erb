@@ -1,0 +1,44 @@
+<!--  This file is app/views/events/index.html.erb -->
+<h2>All Events</h2>
+
+<table class="table table-striped col-md-12" id="events">
+  <thead>
+  <tr>
+    <th>Event Title</th>
+    <th>Category</th>
+    <th>Organizer</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Location</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @events.each do |event| %>
+    <tr>
+      <td>
+        <%= event.title %>
+      </td>
+      <td>
+        <%= event.category %>
+      </td>
+      <td>
+        <%= event.organizer %>
+      </td>
+      <td>
+        <%= event.start_time %>
+      </td>
+      <td>
+        <%= event.end_time %>
+      </td>
+      <td>
+        <%= event.location%>
+      </td>
+      <td>
+        <%= link_to "More about #{event.title}", event_path(event) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add new event!', new_event_path, :class => 'btn btn-primary' %>
