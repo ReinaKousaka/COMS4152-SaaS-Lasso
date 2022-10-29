@@ -1,10 +1,10 @@
-class CreateMovies < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration
   def change
-    create_table :movies do |t|
+    create_table :event do |t|
       t.string :title
-      t.string :rating
+      t.string :organizer
       t.text :description
-      t.datetime :release_date
+      t.datetime :date
       # Add fields that let Rails automatically keep track
       # of when movies are added or modified:
       t.timestamps
