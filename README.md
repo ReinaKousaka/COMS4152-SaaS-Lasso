@@ -1,7 +1,27 @@
-# RottenPotatoes demo app: getting started
+# Lasso
 
-This app is associated with the free [online
-course](http://www.saas-class.org) and (non-free)
-[ebook](http://www.saasbook.info) Engineering Software as a Service.
+### Deployed App Link
+https://lasso-4152.herokuapp.com/
 
-To start working on the Rails Intro homework, please follow [the instructions](instructions/README.md).
+### Run program and tests
+```
+cd SaaS-Lasso
+# Install gems
+bundle install
+
+# Initialize the database
+bin/rake db:drop:all
+bin/rake db:migrate
+bin/rake db:seed
+
+# Launch local server on localhost
+bin/rails server
+
+# TODO: run code test
+```
+
+### Team Members
+- Tatum Hallstoos, tgh2111
+- Kevin Li, kgl2123
+- Yun-Yun Tsai, yt2781
+- Songheng Yin, sy3079
