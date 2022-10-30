@@ -6,11 +6,12 @@ class EventsController < ApplicationController
     # will render app/views/event/show.<extension> by default
   end
 
-  def index 
+  def index
     @events = Event.all 
     @categories_to_show = ["athletics", "academics", "career", "culture", "fun"]
   end 
-
+    
+  end
   def new 
     #default: render 'new' template
   end
