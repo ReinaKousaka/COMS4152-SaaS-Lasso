@@ -1,20 +1,73 @@
 <!--  This file is app/views/events/index.html.erb -->
-<h2>All Events</h2>
+<body style="font-family: courier new">
+<style>
+      table,
+      td,
+      th {
+        padding: 10px;
+        border: 2px solid #1c87c9;
+        border-radius: 5px;
+        background-color: #43EFAB;
+        text-align: center;
+      }
+      
+</style>
 
-<table class="table table-striped col-md-12" id="events">
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: courier new; 
+}
+.text-center {
+  text-align: center;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+</style>
+
+<style>
+.container {
+  height: 100px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
+
+<h2>Lasso! - Stay in the Loop.</h2>
+<h2 style="text-align:center">Events Hub</h2>
+
+<table class="table table-striped col-md-12" style="border:2px solid red;margin-left:auto;margin-right:auto;" id="events">
   <thead>
     <tr>
-      <th>Event Title</th>
+      <th>Event</th>
       <th>Category</th>
       <th>Organizer</th>
       <th>Location</th>
+      <th>Time</th>
     </tr>
   </thead>
   <tbody>
     <% @events.each do |event| %>
       <tr>
         <td>
-          <%= event.title %>
+         <%= link_to "#{event.title}", event_path(event) %>
         </td>
         <td>
           <%= event.category %>
@@ -26,11 +79,17 @@
         <%= event.location%>
         </td>
         <td>
-          <%= link_to "More about #{event.title}", event_path(event) %>
+        <%= "Monday 01:00 PM" %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Add new event!', new_event_path, :class => 'btn btn-primary' %>
+<div class = "container">
+<div class="center">
+    <text> Have an event you want loop Columbia in about?</text> 
+    <button class="button button1" ><%= link_to 'Add new event!', new_event_path, :class => 'btn btn-primary' %></button>
+</div>
+</div>
+
