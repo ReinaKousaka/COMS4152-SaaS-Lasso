@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def index 
     @events = Event.all 
+    @categories_to_show = ["athletics", "academics", "career", "culture", "fun"]
   end 
 
   def new 
@@ -16,14 +17,8 @@ class EventsController < ApplicationController
 
   def create 
     @event = Event.create!(event_params)
-    # flash[:notice] = "#{event.title} was successfully created."
+    flash[:notice] = "Event '#{@event.title}' was successfully created."
     redirect_to events_path
-  end 
-
-  def edit 
-    @event = Event.find params[:id]
-    @event.update_attributes!(event_params)
-    flash[:notice] = "#{@event.title} was successfully updated."
   end 
 
   def destroy
