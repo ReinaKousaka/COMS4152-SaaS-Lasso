@@ -13,6 +13,11 @@ events = [
         :category => "culture", :organizer => "Film Society", 
         :location => "Furnald Lawn", 
         :start_time => DateTime.parse('3rd Feb 2001 04:05:06')
+    },
+    {
+        :title => 'CS Coffee Chat', 
+        :category => "fun", :organizer => "CS department", 
+        :location => " Mudd", 
     }
 ]
 
