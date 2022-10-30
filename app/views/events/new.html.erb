@@ -51,11 +51,7 @@
       width: calc(100% - 10px);
       padding: 5px;
       }
-      select {
-      width: 100%;
-      padding: 7px 0;
-      background: transparent;
-      }
+      
       .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder, a {
       color: #095484;
       }
@@ -165,16 +161,26 @@
     </style>
 
   </head>
+  <h2>Create A New Event</h2>
   <%= form_tag events_path, :class => 'form' do %>
   <%= label :event, :title, 'Event Title', :class => 'col-form-label' %>
   <%= text_field :event, :title, :class => 'form-control' %>
   <label for="category"> Choose a category: </label>
+  <br/>
   <%= select :event, :category, ['','academic','career','culture','athletics','fun'], {}, {class: 'form-control col-1'} %>
   <%= label :event, :organizer, 'Organizer', :class => 'col-form-label'  %>
   <%= text_field :event, :organizer, :class => 'form-control' %>
   <%= label :event, :location, 'Location', :class => 'col-form-label'  %>
   <%= text_field :event, :location, :class => 'form-control' %>
   <br/>
+  <%= label :event, :start_time, 'Start Time', :class => 'col-form-label'  %>
+    <br/>
+    <%= datetime_select :event, :start_time, {}, :class => 'form-control col-2 d-inline' %>
+
+    <br/>
+    <%= label :event, :end_time, 'End Time', :class => 'col-form-label'  %>
+    <br/>
+    <%= datetime_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
 
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
