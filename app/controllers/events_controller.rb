@@ -15,6 +15,17 @@ class EventsController < ApplicationController
     #default: render 'new' template
   end
 
+  def edit
+    @event = Event.find params[:id]
+  end
+
+  def update
+    @event = Event.find params[:id]
+    @event.update_attributes!(event_params)
+    flash[:notice] = "Event '#{@event.title}' was successfully updated."
+    redirect_to events_path(@event)
+  end
+
   def create 
     @event = Event.create!(event_params)
     flash[:notice] = "Event '#{@event.title}' was successfully created."
@@ -32,7 +43,7 @@ class EventsController < ApplicationController
   # # Making "internal" methods private is not required, but is a common practice.
   # # This helps make clear which methods respond to requests, and which ones do not.
   def event_params
-    params.require(:event).permit(:title, :category, :location, :organizer) 
+    params.require(:event).permit(:title, :category, :location, :organizer, :start_time, :end_time) 
   end
 
 

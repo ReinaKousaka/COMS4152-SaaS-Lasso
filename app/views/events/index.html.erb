@@ -60,7 +60,8 @@
       <th>Category</th>
       <th>Organizer</th>
       <th>Location</th>
-      <th>Time</th>
+      <th>Start Time</th>
+      <th>End Time</th>
     </tr>
   </thead>
   <tbody>
@@ -79,7 +80,10 @@
         <%= event.location%>
         </td>
         <td>
-        <%= "Monday 01:00 PM" %>
+        <%= event.start_time %>
+        </td>
+        <td>
+        <%= event.end_time %>
         </td>
       </tr>
     <% end %>
