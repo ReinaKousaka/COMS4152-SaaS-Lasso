@@ -5,10 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'date'
 
-events = [{:title => 'Films on Furnald: The Lion King', :category => "culture", :organizer => "Film Society", :location => "Furnald Lawn", :start_time => '25-Nov-1992'},
-
-  	 ]
+events = [
+    {
+        :title => 'Films on Furnald: The Lion King', 
+        :category => "culture", :organizer => "Film Society", 
+        :location => "Furnald Lawn", 
+        :start_time => DateTime.parse('3rd Feb 2001 04:05:06')
+    }
+]
 
 events.each do |event|
   Event.create!(event)
