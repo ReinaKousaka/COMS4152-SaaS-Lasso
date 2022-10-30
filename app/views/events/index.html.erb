@@ -73,9 +73,16 @@
     <tr>
       <th>Event</th>
       <th>Category</th>
-      <th>Organizer</th>
+      <th>
+        <%= link_to 'Organizer', events_path({sort_by: 'organizer', categories: @categories_to_show_hash}),
+                      id: 'organizer_header', class: ('bg-warning hilite' if @sort_by == 'organizer') %>
+      </th>
       <th>Location</th>
-      <th>Start Time</th>
+      <th>
+      <%= link_to 'Start Time',
+              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
+              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
+      </th>
       <th>End Time</th>
     </tr>
   </thead>
