@@ -12,11 +12,13 @@
     <%= label :event, :location, 'Location', :class => 'col-form-label' %>
     <%= text_field :event, 'location', :class => 'form-control' %>
 
+    <br/>
     <%= label :event, :start_time, 'Start Time', :class => 'col-form-label'  %>
-    <%= date_select :event, :start_time, {}, :class => 'form-control col-2 d-inline' %>
+    <%= datetime_select :event, :start_time, {}, :class => 'form-control col-2 d-inline' %>
 
+    <br/>
     <%= label :event, :end_time, 'End Time', :class => 'col-form-label'  %>
-    <%= date_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
+<%= datetime_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
 
     <br/>
     <%= submit_tag 'Update event Info', :class => 'btn btn-primary' %>
