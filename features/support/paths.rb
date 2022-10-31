@@ -20,6 +20,9 @@ module NavigationHelpers
       when /^the details page for "(.+)"$/
         event = Event.find_by(title: $1)
         event_path(event)
+      when /^the Create New Event page/
+        '/events/new'
+  
      #   when /^the Similar Movies page for "(.+)"/
      #     search_similar_movies_path($1)
       # Add more mappings here.

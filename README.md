@@ -5,6 +5,7 @@ https://lasso-4152.herokuapp.com/
 
 ### Run program and tests
 ```
+# clone/download the repo, then
 cd SaaS-Lasso
 # Install gems
 bundle install
@@ -17,7 +18,9 @@ bin/rake db:seed
 # Launch local server on localhost
 bin/rails server
 
-# TODO: run code test
+# Run code tests (RSpec & Cucumber)
+bundle exec rspec
+rake cucumber
 ```
 
 ### Team Members

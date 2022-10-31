@@ -48,7 +48,7 @@ events = [
         :start_time => DateTime.parse('13th November 15:00:00'),
         :end_time => DateTime.parse('13th November 19:00:00')
     }
-]
+  ]
 
 events.each do |event|
   Event.create!(event)
