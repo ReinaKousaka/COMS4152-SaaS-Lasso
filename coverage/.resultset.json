@@ -96,5 +96,95 @@
       }
     },
     "timestamp": 1667165874
+  },
+  "RSpec": {
+    "coverage": {
+      "/Users/yukino/Documents/Columbia/COMS4152_SaaS/SaaS-Lasso/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/yukino/Documents/Columbia/COMS4152_SaaS/SaaS-Lasso/app/controllers/events_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/yukino/Documents/Columbia/COMS4152_SaaS/SaaS-Lasso/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/yukino/Documents/Columbia/COMS4152_SaaS/SaaS-Lasso/app/models/event.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1667176189
   }
 }

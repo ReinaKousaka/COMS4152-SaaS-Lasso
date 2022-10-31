@@ -33,11 +33,16 @@ group :development, :test do
 
   gem 'database_cleaner'
   gem 'cucumber-rails', require: false
+  # gem 'cucumber-rails-training-wheels'
   gem 'rspec-rails'
   gem 'guard-rspec'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
+end
+
+group :test do
+  gem 'simplecov', :require => false
 end
 
 group :production do
