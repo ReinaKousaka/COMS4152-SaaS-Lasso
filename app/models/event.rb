@@ -1,12 +1,13 @@
 class Event < ActiveRecord::Base
-    # def self.all_ratings
-    #   ['G', 'PG', 'PG-13', 'R']
-    # end
-    # def self.with_ratings(ratings, sort_by)
-    #   if ratings.nil?
-    #     all.order sort_by
-    #   else
-    #     where(rating: ratings.map(&:upcase)).order sort_by
-    #   end
-    # end
+  def self.all_categories
+    ["athletics", "academics", "career", "culture", "fun"]
   end
+
+  def self.with_categories(categories, sort_by)
+    if categories.nil?
+      all.order sort_by
+    else
+      where(category: categories.map(&:downcase)).order sort_by
+    end
+  end
+end

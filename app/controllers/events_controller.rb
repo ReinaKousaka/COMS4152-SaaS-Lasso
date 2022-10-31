@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :force_index_redirect, only: [:index]
   
   def show 
     id = params[:id] #retrieve event ID from URI route 
@@ -6,9 +7,16 @@ class EventsController < ApplicationController
     # will render app/views/event/show.<extension> by default
   end
 
-  def index 
-    @events = Event.all 
-    @categories_to_show = ["athletics", "academics", "career", "culture", "fun"]
+  def index
+    @all_categories = Event.all_categories
+    @events = Event.with_categories(categories_list, sort_by)
+    @categories_to_show_hash = categories_hash
+    @sort_by = sort_by
+    puts "HELLO!"
+    puts categories_list
+    # remember the correct settings for next time
+    session['categories'] = categories_list
+    session['sort_by'] = @sort_by
   end 
 
   def new 
@@ -46,5 +54,24 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :category, :location, :organizer, :start_time, :end_time) 
   end
 
+  def categories_list
+    params[:categories]&.keys || session[:categories] || Event.all_categories
+  end
+
+  def categories_hash
+    Hash[categories_list.collect { |item| [item, "1"] }]
+  end
+
+  def sort_by
+    params[:sort_by] || session[:sort_by] || 'id'
+  end
+
+  def force_index_redirect
+    if !params.key?(:categories) || !params.key?(:sort_by)
+      flash.keep
+      url = events_path(sort_by: sort_by, categories: categories_hash)
+      redirect_to url
+    end
+  end
 
 end
