@@ -18,7 +18,7 @@ events = [
     },
     {
         :title => 'CS Coffee Chat', 
-        :category => "fun", 
+        :category => "academics", 
         :organizer => "CS department", 
         :location => " CS Lounge", 
         :start_time => DateTime.parse('1st November 14:00:00'),
