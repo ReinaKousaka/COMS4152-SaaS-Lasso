@@ -12,8 +12,8 @@ class EventsController < ApplicationController
     @events = Event.with_categories(categories_list, sort_by)
     @categories_to_show_hash = categories_hash
     @sort_by = sort_by
-    puts "HELLO!"
-    puts categories_list
+    # puts "HELLO!"
+    # puts categories_list
     # remember the correct settings for next time
     session['categories'] = categories_list
     session['sort_by'] = @sort_by

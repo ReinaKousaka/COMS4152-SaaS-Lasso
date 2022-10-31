@@ -10,16 +10,45 @@ require 'date'
 events = [
     {
         :title => 'Films on Furnald: The Lion King', 
-        :category => "culture", :organizer => "Film Society", 
+        :category => "culture", 
+        :organizer => "Film Society", 
         :location => "Furnald Lawn", 
-        :start_time => DateTime.parse('3rd Feb 2001 04:05:06')
+        :start_time => DateTime.parse('30th October 20:00:00'),
+        :end_time => DateTime.parse('30th October 22:00:00')
     },
     {
         :title => 'CS Coffee Chat', 
-        :category => "fun", :organizer => "CS department", 
-        :location => " Mudd", 
+        :category => "fun", 
+        :organizer => "CS department", 
+        :location => " CS Lounge", 
+        :start_time => DateTime.parse('1st November 14:00:00'),
+        :end_time => DateTime.parse('1st November 15:00:00')
+    },
+    {
+        :title => 'Undergraduate Holiday Bash', 
+        :category => 'fun' , 
+        :organizer => "Undergraduate Student Life", 
+        :location => "John Jay Lounge", 
+        :start_time => DateTime.parse('2nd December 18:00:00'),
+        :end_time => DateTime.parse('2nd December 23:30:00')
+    },
+    {
+        :title => 'Networking Roundtable in Finance', 
+        :category => 'career', 
+        :organizer => 'CCE', 
+        :location => 'Lerner Audiotorium', 
+        :start_time => DateTime.parse('15th November 14:00:00'),
+        :end_time => DateTime.parse('15th November 17:00:00')
+    },
+    {
+        :title => 'Varsity Football vs. UPenn', 
+        :category => 'athletics', 
+        :organizer => 'Varisty Football', 
+        :location => 'Baker Stadium', 
+        :start_time => DateTime.parse('13th November 15:00:00'),
+        :end_time => DateTime.parse('13th November 19:00:00')
     }
-]
+  ]
 
 events.each do |event|
   Event.create!(event)
