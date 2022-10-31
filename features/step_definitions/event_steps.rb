@@ -29,8 +29,22 @@ end
     end
   end
   
-  Then /^the director of "(.+)" should be "(.+)"/ do |movie_name, director|
-    movie = Movie.find_by(title: movie_name)
-    visit movie_path(movie)
-    expect(movie.director).to eq director
-  end
+Then /^the category of "(.+)" should be "(.+)"/ do |event_name, category|
+    event = Event.find_by(title: event_name)
+    visit event_path(event)
+    expect(event.category).to eq category
+end
+
+When /^(?:|I )select datetime "([^ ]*) ([^ ]*) ([^ ]*) - ([^:]*):([^"]*)" as the "([^"]*)"$/ do |year, month, day, hour, minute, field|
+  select(year,   :from => "#{field}_1i")
+  select(month,  :from => "#{field}_2i")
+  select(day,    :from => "#{field}_3i")
+  select(hour,   :from => "#{field}_4i")
+  select(minute, :from => "#{field}_5i")
+end
+
+Then /^the start time of "(.+)" should be "(.+)"/ do |event_name, start_time|
+  event = Event.find_by(title: event_name)
+  visit event_path(event)
+  expect(event.start_time).to eq start_time
+end
