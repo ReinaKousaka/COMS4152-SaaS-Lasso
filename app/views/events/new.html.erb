@@ -59,8 +59,12 @@
   </head>
   <h2>Create A New Event</h2>
   <%= form_tag events_path, :class => 'form' do %>
+<<<<<<< HEAD
   <%= label :event, :title, 'Event Title', :class => 'col-form-label' %>
   <br>
+=======
+  <%= label :event, :title, 'Title', :class => 'col-form-label' %>
+>>>>>>> 66280f6a6bcf8bf0a0873a9f8540900fcda8398e
   <%= text_field :event, :title, :class => 'form-control' %>
   <br>
   <label for="category"> Choose a category: </label>
