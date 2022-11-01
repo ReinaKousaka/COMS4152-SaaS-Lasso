@@ -59,22 +59,17 @@
   </head>
   <h2>Create A New Event</h2>
   <%= form_tag events_path, :class => 'form' do %>
-<<<<<<< HEAD
+
   <%= label :event, :title, 'Event Title', :class => 'col-form-label' %>
   <br>
-=======
-  <%= label :event, :title, 'Title', :class => 'col-form-label' %>
->>>>>>> 66280f6a6bcf8bf0a0873a9f8540900fcda8398e
+
   <%= text_field :event, :title, :class => 'form-control' %>
   <br>
   <label for="category"> Choose a category: </label>
   <br/>
   <%= select :event, :category, ['','academic','career','culture','athletics','fun'], {}, {class: 'form-control col-1'} %>
-<<<<<<< Updated upstream
-  <br>
-=======
   <br/>
->>>>>>> Stashed changes
+
   <%= label :event, :organizer, 'Organizer', :class => 'col-form-label'  %>
   <br>
   <%= text_field :event, :organizer, :class => 'form-control' %>
