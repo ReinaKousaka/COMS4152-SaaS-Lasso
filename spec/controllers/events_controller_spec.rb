@@ -66,7 +66,6 @@ RSpec.describe EventsController, type: :controller do
         describe 'index test' do 
             it 'should return all events if no categories selected and no sort by' do 
                 get :index
-
                 expect(@categories_to_show_hash).to eq(nil)
                 expect(@sort_by).to eq(nil)
                 expect(session['categories']).to eq(nil)
@@ -107,5 +106,42 @@ RSpec.describe EventsController, type: :controller do
                 expect(flash[:notice]).to eq("Event '#{event1[:title]}' was successfully updated.")
             end
         end
+
+
+        describe 'GET #show' do
+            let!(:event) { FactoryGirl.create(:event) }
+            before(:each) do
+            get :show, id: event.id
+            end
+        
+            it 'should find the event' do
+                expect(assigns(:event)).to eql(event)
+            end
+        
+            it 'should render the show template' do
+                expect(response).to render_template('show')
+            end
+        end
+
+        describe 'GET index' do
+            let!(:event) { FactoryGirl.create(:event) }
+        
+            it 'should render the index template' do
+              get :index, id: event.id
+                expect(response).to render_template('index')
+            end
+        
+            it 'should assign instance variable for title header' do
+              get :index, { sort: 'start_time'}
+              expect(event.title).to eql('CS Coffee Chat')
+            end
+        
+            it 'should assign instance variable for release_date header' do
+              get :index, { sort: 'organizer'}
+              expect(event.title).to eql('CS Coffee Chat')
+            end
+        end
+          
+
     end
 end

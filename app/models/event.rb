@@ -10,4 +10,10 @@ class Event < ActiveRecord::Base
       where(category: categories.map(&:downcase)).order sort_by
     end
   end
+
+  def self.with_sort(sort_by)
+      all.order sort_by
+  end
+
+
 end

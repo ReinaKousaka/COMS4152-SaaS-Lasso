@@ -793,21 +793,20 @@
   },
   "RSpec": {
     "coverage": {
-      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/helpers/application_helper.rb": {
+      "/home/codio/workspace/SaaS-Lasso/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/controllers/events_controller.rb": {
+      "/home/codio/workspace/SaaS-Lasso/app/controllers/events_controller.rb": {
         "lines": [
           1,
           1,
           null,
           1,
-          0,
-          0,
-          null,
+          2,
+          2,
           null,
           null,
           1,
@@ -815,13 +814,11 @@
           0,
           0,
           0,
-          null,
           0,
           0,
           null,
           null,
           1,
-          null,
           null,
           null,
           1,
@@ -846,9 +843,6 @@
           1,
           1,
           1,
-          null,
-          null,
-          null,
           null,
           null,
           1,
@@ -856,29 +850,29 @@
           null,
           null,
           1,
-          1,
+          4,
           null,
           null,
           1,
-          6,
+          24,
           null,
           null,
           1,
-          1,
+          4,
           null,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
+          4,
+          4,
+          4,
+          4,
           null,
           null,
           null,
           null
         ]
       },
-      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/controllers/application_controller.rb": {
+      "/home/codio/workspace/SaaS-Lasso/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -887,11 +881,11 @@
           null
         ]
       },
-      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/models/event.rb": {
+      "/home/codio/workspace/SaaS-Lasso/app/models/event.rb": {
         "lines": [
           1,
           1,
-          2,
+          5,
           null,
           null,
           1,
@@ -899,12 +893,18 @@
           1,
           null,
           1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
           null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1667425830
+    "timestamp": 1667429931
   }
 }

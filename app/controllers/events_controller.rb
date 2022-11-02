@@ -4,7 +4,6 @@ class EventsController < ApplicationController
   def show 
     id = params[:id] #retrieve event ID from URI route 
     @event = Event.find(id) #look up event by unique ID 
-    # will render app/views/event/show.<extension> by default
   end
 
   def index
@@ -12,13 +11,11 @@ class EventsController < ApplicationController
     @events = Event.with_categories(categories_list, sort_by)
     @categories_to_show_hash = categories_hash
     @sort_by = sort_by
-    # remember the correct settings for next time
     session['categories'] = categories_list
     session['sort_by'] = @sort_by
   end 
 
   def new 
-    #default: render 'new' template
   end
 
   def edit
@@ -45,9 +42,6 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  # private
-  # # Making "internal" methods private is not required, but is a common practice.
-  # # This helps make clear which methods respond to requests, and which ones do not.
   def event_params
     params.require(:event).permit(:title, :category, :location, :organizer, :start_time, :end_time) 
   end
