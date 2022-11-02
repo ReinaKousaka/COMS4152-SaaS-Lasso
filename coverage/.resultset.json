@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/codio/workspace/SaaS-Lasso/config/environment.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -10,7 +10,7 @@
           1
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/application.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/application.rb": {
         "lines": [
           1,
           null,
@@ -40,14 +40,14 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/boot.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/boot.rb": {
         "lines": [
           1,
           null,
           1
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/environments/test.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -93,7 +93,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/assets.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -108,7 +108,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/backtrace_silencers.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -119,14 +119,14 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/cookies_serializer.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
           1
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/filter_parameter_logging.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -134,7 +134,7 @@
           1
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/inflections.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -154,7 +154,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/mime_types.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -162,14 +162,14 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/session_store.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/session_store.rb": {
         "lines": [
           null,
           null,
           1
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/to_time_preserves_timezone.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/to_time_preserves_timezone.rb": {
         "lines": [
           null,
           null,
@@ -183,7 +183,7 @@
           1
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/initializers/wrap_parameters.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -201,7 +201,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/config/routes.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -263,7 +263,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/features/support/selectors.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/features/support/selectors.rb": {
         "lines": [
           null,
           null,
@@ -312,7 +312,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/features/support/rspec.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/features/support/rspec.rb": {
         "lines": [
           null,
           null,
@@ -329,7 +329,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/features/support/paths.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/features/support/paths.rb": {
         "lines": [
           null,
           null,
@@ -381,7 +381,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/features/step_definitions/event_steps.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/features/step_definitions/event_steps.rb": {
         "lines": [
           null,
           1,
@@ -470,7 +470,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/features/step_definitions/web_steps.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/features/step_definitions/web_steps.rb": {
         "lines": [
           null,
           null,
@@ -677,7 +677,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/app/models/event.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/models/event.rb": {
         "lines": [
           1,
           1,
@@ -694,7 +694,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/app/controllers/events_controller.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/controllers/events_controller.rb": {
         "lines": [
           1,
           1,
@@ -710,8 +710,6 @@
           19,
           19,
           19,
-          null,
-          null,
           null,
           19,
           19,
@@ -775,7 +773,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/app/controllers/application_controller.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -784,24 +782,24 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/app/helpers/application_helper.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       }
     },
-    "timestamp": 1667190743
+    "timestamp": 1667192773
   },
   "RSpec": {
     "coverage": {
-      "/home/codio/workspace/SaaS-Lasso/app/helpers/application_helper.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/app/controllers/events_controller.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/controllers/events_controller.rb": {
         "lines": [
           1,
           1,
@@ -818,8 +816,6 @@
           0,
           0,
           null,
-          null,
-          null,
           0,
           0,
           null,
@@ -840,23 +836,23 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
           null,
           null,
           1,
-          0,
+          1,
           null,
           null,
           1,
@@ -882,7 +878,7 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/app/controllers/application_controller.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -891,24 +887,24 @@
           null
         ]
       },
-      "/home/codio/workspace/SaaS-Lasso/app/models/event.rb": {
+      "/Users/kevinli/Documents/GitHub/SaaS-Lasso/app/models/event.rb": {
         "lines": [
           1,
           1,
-          0,
+          1,
           null,
           null,
           1,
-          0,
-          0,
+          2,
+          1,
           null,
-          0,
+          1,
           null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1667190770
+    "timestamp": 1667423778
   }
 }
