@@ -44,5 +44,21 @@ RSpec.describe EventsController, type: :controller do
                 expect(flash[:notice]).to eq("Event '#{event[:title]}' was successfully created.")
             end
         end
+
+    describe 'deleting event' do 
+        it 'event that is deleted should not appear' do 
+
+            event = @events.take
+            original_events_count = Event.all.count       
+            
+            delete :destroy, id: event.id
+            expect(Event.find_by_title("Films on Furnald: The Lion King")). to eq(nil)
+            expect(response).to redirect_to events_path
+            expect(@events.count).to eq(original_events_count - 1)
+            expect(flash[:notice]).to eq ("Event 'Films on Furnald: The Lion King' deleted.")
+        end
+    end
+
+    
     end
 end
