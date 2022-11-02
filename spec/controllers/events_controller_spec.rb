@@ -63,13 +63,5 @@ RSpec.describe EventsController, type: :controller do
                 expect(flash[:notice]).to eq ("Event 'Films on Furnald: The Lion King' deleted.")
             end
         end
-
-        it '.should render event with a given category' do
-            get :index, {
-                categories: {'academics' => 1}, 
-                button_clicked: true
-            }
-            expect(response).to render_template('index')
-        end
     end
 end
