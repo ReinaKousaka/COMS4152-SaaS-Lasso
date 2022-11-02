@@ -51,6 +51,7 @@ RSpec.describe EventsController, type: :controller do
             end
         end
 
+
         describe 'deleting event' do 
             it 'event that is deleted should not appear' do 
                 event = @events.take
@@ -63,5 +64,38 @@ RSpec.describe EventsController, type: :controller do
                 expect(flash[:notice]).to eq ("Event 'Films on Furnald: The Lion King' deleted.")
             end
         end
+
+        describe 'GET #edit' do
+            let!(:event) { FactoryGirl.create(:event) }
+            before do
+            get :edit, id: event.id
+            end
+        
+            it 'should find the movie' do
+            expect(assigns(:event)).to eql(event)
+            end
+        
+            it 'should render the edit template' do
+            expect(response).to render_template('edit')
+            end
+        end
+
+        describe 'PUT #update' do
+            let(:event1) { FactoryGirl.create(:event) }
+            before(:each) do
+            put :update, id: event1.id, event: FactoryGirl.attributes_for(:event, category: 'culture')
+            end
+
+            it 'updates an existing movie' do
+                event1.reload
+                expect(event1.category).to eql('culture')
+            end
+
+            it 'redirects to the main page' do
+                expect(response).to redirect_to(events_path(event1))
+                expect(flash[:notice]).to eq("Event '#{event1[:title]}' was successfully updated.")
+            end
+        end
+
     end
 end
