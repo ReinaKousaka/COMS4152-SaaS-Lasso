@@ -51,7 +51,7 @@ RSpec.describe EventsController, type: :controller do
         end
 
         describe 'deleting event' do 
-            it 'event that is deleted should not appear' do =
+            it 'event that is deleted should not appear' do
                 event = @events.take
                 original_events_count = Event.all.count       
                 
