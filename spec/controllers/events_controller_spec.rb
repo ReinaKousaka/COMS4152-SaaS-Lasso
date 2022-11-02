@@ -8,7 +8,6 @@ RSpec.describe EventsController, type: :controller do
         end   
     end
 
-    # let!(:event) { create :events }
     context 'Events page basic methods' do
         before :each do
             Event.delete_all
@@ -21,12 +20,11 @@ RSpec.describe EventsController, type: :controller do
                 :end_time => DateTime.parse('30th October 22:00:00')
             })
             Event.create({
-                :title => 'CS Coffee Chat', 
-                :category => "academic", 
-                :organizer => "CS Department", 
-                :location => "CS Lounge", 
-                :start_time => DateTime.parse('28th October 14:00:00'),
-                :end_time => DateTime.parse('28th October 16:00:00')
+                :category => "academics", 
+                :organizer => "CS department", 
+                :location => " CS Lounge", 
+                :start_time => DateTime.parse('1st November 14:00:00'),
+                :end_time => DateTime.parse('1st November 15:00:00')
             })
             @events = Event.all
         end
@@ -35,18 +33,17 @@ RSpec.describe EventsController, type: :controller do
             it 'Should be create a event' do
                 events_count = Event.all.count
                 event = {
-                    title: 'Varsity Football vs. UPenn', 
-                    category: 'athletics', 
-                    organizer: 'Varisty Football', 
-                    location: 'Baker Stadium', 
-                    start_time: DateTime.parse('13th November 15:00:00'),
-                    end_time: DateTime.parse('13th November 19:00:00')
+                    :title => 'Varsity Football vs. UPenn', 
+                    :category => 'athletics', 
+                    :organizer => 'Varisty Football', 
+                    :location => 'Baker Stadium', 
+                    :start_time => DateTime.parse('13th November 15:00:00'),
+                    :end_time => DateTime.parse('13th November 19:00:00')
                 }
 
-                # events_path events#create
                 get :create, event: event
-                
-                expect(event[:title]).to eq('Varsity Football vs. UPenn')
+
+                expect(flash[:notice]).to eq("Event '#{event[:title]}' was successfully created.")
                 expect(response).to redirect_to(events_path)
                 expect(@events.count).to eq(events_count + 1)
                 expect(flash[:notice]).to eq("Event '#{event[:title]}' was successfully created.")
@@ -54,8 +51,7 @@ RSpec.describe EventsController, type: :controller do
         end
 
         describe 'deleting event' do 
-            it 'event that is deleted should not appear' do 
-
+            it 'event that is deleted should not appear' do =
                 event = @events.take
                 original_events_count = Event.all.count       
                 
@@ -78,7 +74,38 @@ RSpec.describe EventsController, type: :controller do
                 expect(@events.count).to eq (Event.all.count)
                 expect(@events.first).to eq(Event.first)
             end
-        end
+        end 
+
+        describe 'GET #edit' do
+            let!(:event) { FactoryGirl.create(:event) }
+            before do
+            get :edit, id: event.id
+            end
         
-    end 
+            it 'should find the movie' do
+            expect(assigns(:event)).to eql(event)
+            end
+        
+            it 'should render the edit template' do
+            expect(response).to render_template('edit')
+            end
+        end
+
+        describe 'PUT #update' do
+            let(:event1) { FactoryGirl.create(:event) }
+            before(:each) do
+            put :update, id: event1.id, event: FactoryGirl.attributes_for(:event, category: 'culture')
+            end
+
+            it 'updates an existing movie' do
+                event1.reload
+                expect(event1.category).to eql('culture')
+            end
+
+            it 'redirects to the main page' do
+                expect(response).to redirect_to(events_path(event1))
+                expect(flash[:notice]).to eq("Event '#{event1[:title]}' was successfully updated.")
+            end
+        end
+    end
 end
