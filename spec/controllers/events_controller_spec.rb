@@ -20,7 +20,6 @@ RSpec.describe EventsController, type: :controller do
                 :end_time => DateTime.parse('30th October 22:00:00')
             })
             Event.create({
-                :title => 'CS Coffee Chat', 
                 :category => "academics", 
                 :organizer => "CS department", 
                 :location => " CS Lounge", 
@@ -51,9 +50,8 @@ RSpec.describe EventsController, type: :controller do
             end
         end
 
-
         describe 'deleting event' do 
-            it 'event that is deleted should not appear' do 
+            it 'event that is deleted should not appear' do =
                 event = @events.take
                 original_events_count = Event.all.count       
                 
@@ -64,6 +62,19 @@ RSpec.describe EventsController, type: :controller do
                 expect(flash[:notice]).to eq ("Event 'Films on Furnald: The Lion King' deleted.")
             end
         end
+
+        describe 'index test' do 
+            it 'should return all events if no categories selected and no sort by' do 
+                get :index
+
+                expect(@categories_to_show_hash).to eq(nil)
+                expect(@sort_by).to eq(nil)
+                expect(session['categories']).to eq(nil)
+                expect(session['sort_by']).to eq(nil)
+                expect(@events.count).to eq (Event.all.count)
+                expect(@events.first).to eq(Event.first)
+            end
+        end 
 
         describe 'GET #edit' do
             let!(:event) { FactoryGirl.create(:event) }
@@ -96,6 +107,5 @@ RSpec.describe EventsController, type: :controller do
                 expect(flash[:notice]).to eq("Event '#{event1[:title]}' was successfully updated.")
             end
         end
-
     end
 end
