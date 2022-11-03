@@ -4,7 +4,8 @@
 https://lasso-4152.herokuapp.com/
 
 ### Run program and tests
-Ruby version: 2.6.6
+OS: MacOS 12.6 or Ubuntu 22.04 <br/>
+Ruby version: 2.6.6 <br/>
 Rails version: 4.2.11
 ```
 # clone/download the repo, then
