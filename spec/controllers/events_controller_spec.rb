@@ -115,18 +115,17 @@ RSpec.describe EventsController, type: :controller do
         
             it 'should return all events if no categories selected and no sort by' do 
                 get :index
+
+                assert_response :success
+                response.should render_template('index')
+
                 expect(@categories_to_show_hash).to eq(nil)
                 expect(@sort_by).to eq(nil)
-                expect(session['categories']).to eq(nil)
-                expect(session['sort_by']).to eq(nil)
+                expect(session['categories']).to eq(["athletics", "academics", "career", "culture", "fun"])
+                expect(session['sort_by']).to eq('id')
                 expect(@events.count).to eq(Event.all.count)
                 expect(@events.first).to eq(Event.first)
             end
-        
-            # it 'should render the index template' do
-            #   get :index, id: event.id
-            #     expect(response).to render_template('index')
-            # end
 
             it 'should assign instance variable for title header' do
               get :index, { sort: 'start_time'}
