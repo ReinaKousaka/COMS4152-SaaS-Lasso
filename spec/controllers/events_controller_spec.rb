@@ -16,8 +16,8 @@ RSpec.describe EventsController, type: :controller do
                 :category => "culture", 
                 :organizer => "Film Society", 
                 :location => "Furnald Lawn", 
-                :start_time => DateTime.parse('30th October 20:00:00'),
-                :end_time => DateTime.parse('30th October 22:00:00')
+                :start_time => DateTime.parse('30th November 20:00:00'),
+                :end_time => DateTime.parse('30th November 22:00:00')
             })
             Event.create({
                 :category => "academics", 
@@ -29,7 +29,7 @@ RSpec.describe EventsController, type: :controller do
             @events = Event.all
         end
 
-        describe '.create a new event' do
+        describe 'POST #create' do
             it 'Should be create a event' do
                 events_count = Event.all.count
                 event = {
@@ -46,11 +46,10 @@ RSpec.describe EventsController, type: :controller do
                 expect(flash[:notice]).to eq("Event '#{event[:title]}' was successfully created.")
                 expect(response).to redirect_to(events_path)
                 expect(@events.count).to eq(events_count + 1)
-                expect(flash[:notice]).to eq("Event '#{event[:title]}' was successfully created.")
             end
         end
 
-        describe 'deleting event' do 
+        describe 'DELETE #destroy' do 
             it 'event that is deleted should not appear' do
                 event = @events.take
                 original_events_count = Event.all.count       
@@ -63,37 +62,25 @@ RSpec.describe EventsController, type: :controller do
             end
         end
 
-        describe 'index test' do 
-            it 'should return all events if no categories selected and no sort by' do 
-                get :index
-                expect(@categories_to_show_hash).to eq(nil)
-                expect(@sort_by).to eq(nil)
-                expect(session['categories']).to eq(nil)
-                expect(session['sort_by']).to eq(nil)
-                expect(@events.count).to eq (Event.all.count)
-                expect(@events.first).to eq(Event.first)
-            end
-        end 
-
         describe 'GET #edit' do
             let!(:event) { FactoryGirl.create(:event) }
             before do
-            get :edit, id: event.id
+                get :edit, id: event.id
             end
         
             it 'should find the movie' do
-            expect(assigns(:event)).to eql(event)
+                expect(assigns(:event)).to eql(event)
             end
         
             it 'should render the edit template' do
-            expect(response).to render_template('edit')
+                expect(response).to render_template('edit')
             end
         end
 
         describe 'PUT #update' do
             let(:event1) { FactoryGirl.create(:event) }
             before(:each) do
-            put :update, id: event1.id, event: FactoryGirl.attributes_for(:event, category: 'culture')
+                put :update, id: event1.id, event: FactoryGirl.attributes_for(:event, category: 'culture')
             end
 
             it 'updates an existing movie' do
@@ -111,7 +98,7 @@ RSpec.describe EventsController, type: :controller do
         describe 'GET #show' do
             let!(:event) { FactoryGirl.create(:event) }
             before(:each) do
-            get :show, id: event.id
+                get :show, id: event.id
             end
         
             it 'should find the event' do
@@ -126,11 +113,21 @@ RSpec.describe EventsController, type: :controller do
         describe 'GET index' do
             let!(:event) { FactoryGirl.create(:event) }
         
-            it 'should render the index template' do
-              get :index, id: event.id
-                expect(response).to render_template('index')
+            it 'should return all events if no categories selected and no sort by' do 
+                get :index
+                expect(@categories_to_show_hash).to eq(nil)
+                expect(@sort_by).to eq(nil)
+                expect(session['categories']).to eq(nil)
+                expect(session['sort_by']).to eq(nil)
+                expect(@events.count).to eq(Event.all.count)
+                expect(@events.first).to eq(Event.first)
             end
         
+            # it 'should render the index template' do
+            #   get :index, id: event.id
+            #     expect(response).to render_template('index')
+            # end
+
             it 'should assign instance variable for title header' do
               get :index, { sort: 'start_time'}
               expect(event.title).to eql('CS Coffee Chat')
@@ -142,6 +139,5 @@ RSpec.describe EventsController, type: :controller do
             end
         end
           
-
     end
 end
