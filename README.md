@@ -4,6 +4,9 @@
 https://lasso-4152.herokuapp.com/
 
 ### Run program and tests
+OS: MacOS 12.6 or Ubuntu 22.04 <br/>
+Ruby version: 2.6.6 <br/>
+Rails version: 4.2.11
 ```
 # clone/download the repo, then
 cd SaaS-Lasso
@@ -20,7 +23,7 @@ bin/rails server
 
 # Run code tests (RSpec & Cucumber)
 bundle exec rspec
-rake cucumber
+bundle exec rake cucumber
 ```
 
 ### Team Members

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :force_index_redirect, only: [:index]
+  # before_action :force_index_redirect, only: [:index]
   
   def show 
     id = params[:id] #retrieve event ID from URI route 
@@ -58,12 +58,12 @@ class EventsController < ApplicationController
     params[:sort_by] || session[:sort_by] || 'id'
   end
 
-  def force_index_redirect
-    if !params.key?(:categories) || !params.key?(:sort_by)
-      flash.keep
-      url = events_path(sort_by: sort_by, categories: categories_hash)
-      redirect_to url
-    end
-  end
+  # def force_index_redirect
+  #   if !params.key?(:categories) || !params.key?(:sort_by)
+  #     flash.keep
+  #     url = events_path(sort_by: sort_by, categories: categories_hash)
+  #     redirect_to url
+  #   end
+  # end
 
 end
