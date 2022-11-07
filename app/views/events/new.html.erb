@@ -87,6 +87,11 @@
     <br/>
     <%= datetime_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
 
+    <br/>
+    <%= label :event, :description, 'Description', :class => 'col-form-label'  %>
+    <br/>
+    <%= text_field :event, :description, :class => 'form-control' %>
+
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <br>
   <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
