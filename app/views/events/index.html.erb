@@ -57,14 +57,6 @@
 
 <h2 style="text-align:center">Events Hub</h2>
 
-<%= month_calendar(events: @meetings) do |date, meetings| %>
-  <%= date %>
-    <% meetings.each do |meeting| %>
-    <div>
-      <%= meeting.title %>
-    </div>
-  <% end %>
-<% end %>
 
 <div class="form-check  form-check-inline">
 <%= form_tag events_path, method: :get, id: 'categories_form' do %>
@@ -80,6 +72,16 @@
 </div>
 <br>
 
+<%= month_calendar(events: @meetings) do |date, meetings| %>
+  <%= date %>
+    <% meetings.each do |meeting| %>
+    <div>
+      <%= link_to "#{meeting.title}", event_path(meeting)  %>
+    </div>
+  <% end %>
+<% end %>
+
+<!--
 <table class="table table-striped col-md-12" style="border:2px solid red;margin-left:auto;margin-right:auto;" id="events">
   <thead>
     <tr>
@@ -123,6 +125,7 @@
     <% end %>
   </tbody>
 </table>
+--> 
 
 <div class = "container">
 <div class="center">
