@@ -57,6 +57,15 @@
 
 <h2 style="text-align:center">Events Hub</h2>
 
+<%= month_calendar(events: @meetings) do |date, meetings| %>
+  <%= date %>
+    <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.title %>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="form-check  form-check-inline">
 <%= form_tag events_path, method: :get, id: 'categories_form' do %>
   <%= hidden_field_tag 'sort_by', @sort_by %>

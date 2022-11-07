@@ -11,7 +11,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+# Use simple calendar
+gem "simple_calendar", "~> 2.4"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
