@@ -14,6 +14,8 @@ gem 'jquery-rails'
 # Use simple calendar
 gem "simple_calendar", "~> 2.4"
 
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

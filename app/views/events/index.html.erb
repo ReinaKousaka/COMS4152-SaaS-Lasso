@@ -1,4 +1,5 @@
 <!--  This file is app/views/events/index.html.erb -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body style="font-family: courier new">
 <style>
       table,
@@ -7,12 +8,15 @@
         padding: 10px;
         border: 2px solid #1c87c9;
         border-radius: 5px;
-        background-color: #43EFAB;
+        background-color: #e7e6eb;
         text-align: center;
       }
       form {
   text-align: center;
 }
+
+
+
 </style>
 
 <style>
@@ -52,34 +56,86 @@
 }
 </style>
 
-<h2>Lasso! - Stay in the Loop.</h2>
-
-
-<h2 style="text-align:center">Events Hub</h2>
-
-
-<div class="form-check  form-check-inline">
-<%= form_tag events_path, method: :get, id: 'categories_form' do %>
-  <%= hidden_field_tag 'sort_by', @sort_by %>
-  Include:
-  <% @all_categories.each do |category| %>
-      <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
-      <%= check_box_tag "categories[#{category}]", '1', (@categories_to_show_hash.include?(category)),
-        class: 'form-check-input' %>
-  <% end %>
-  <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-primary' %>
-<% end %>
+<div class="navbar navbar-dark bg-dark shadow-sm ">
+    <h2 style="color: white">Lasso! - Stay in the Loop.</h2>
+  </div>
 </div>
-<br>
 
-<%= month_calendar(events: @meetings) do |date, meetings| %>
-  <%= date %>
-    <% meetings.each do |meeting| %>
-    <div>
-      <%= link_to "#{meeting.title}", event_path(meeting)  %>
+<div class="container mt-4">
+<div class="row">
+<div class="col-2">
+
+<div class="card">
+    <div class="card-header">
+       <h3 style="text-align:center">Events Filter</h3>
     </div>
-  <% end %>
-<% end %>
+    <div class="card-body">
+      <%= form_tag events_path, method: :get, id: 'categories_form' do %>
+        <%= hidden_field_tag 'sort_by', @sort_by %>
+        Include:
+      
+        <% @all_categories.each do |category| %>
+            <li class="list-group-item border-0 text-center">
+            <div class="form-check  form-check-inline align-items-center">
+            <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
+            <%= check_box_tag "categories[#{category}]", '1', (@categories_to_show_hash.include?(category)),
+              class: 'form-check-input' %>
+            </div>
+            </li>
+        <% end %>
+        
+        <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-info' %>
+      <% end %>
+    </div>
+  </div>
+  <!--
+  <div class="card">
+    <div class="card_body justify-content-center">
+    <h3 style="text-align:center">Events Hub</h3>
+      <%= form_tag events_path, method: :get, id: 'categories_form' do %>
+        <%= hidden_field_tag 'sort_by', @sort_by %>
+        Include:
+      
+        <% @all_categories.each do |category| %>
+            <li class="list-group-item border-0 text-center">
+            <div class="form-check  form-check-inline align-items-center">
+            <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
+            <%= check_box_tag "categories[#{category}]", '1', (@categories_to_show_hash.include?(category)),
+              class: 'form-check-input' %>
+            </div>
+            </li>
+        <% end %>
+        
+        <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-info' %>
+      <% end %>
+    </div>
+  </div>
+  -->
+</div>
+
+<div class="col-10">
+  <div class="card">
+    <div class="card_body justify-content-center">
+      <%= month_calendar(events: @meetings) do |date, meetings| %>
+        <%= date %>
+          <% meetings.each do |meeting| %>
+          <div>
+            <%= link_to "#{meeting.title}", event_path(meeting)  %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+       Have an event you want loop Columbia in about?
+    </div>
+    <div class="card-body">
+      <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
+      <%= link_to 'Search new event!', new_event_path, :class => 'btn btn-info' %>
+    </div>
+  </div>
+</div>
 
 <!--
 <table class="table table-striped col-md-12" style="border:2px solid red;margin-left:auto;margin-right:auto;" id="events">
@@ -125,12 +181,14 @@
     <% end %>
   </tbody>
 </table>
---> 
+
 
 <div class = "container">
 <div class="center">
     <text> Have an event you want loop Columbia in about?</text> 
-    <button class="button button1" ><%= link_to 'Add new event!', new_event_path, :class => 'btn btn-primary' %></button>
+    <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
 </div>
 </div>
-
+-->
+ </div>
+ </div>
