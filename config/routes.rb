@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # get 'users/new'
+  get '/register', to: 'users#new'
+  resources :users, only: [:create]
+
   resources :events
   root :to => redirect('/events')
   # The priority is based upon order of creation: first created -> highest priority.
