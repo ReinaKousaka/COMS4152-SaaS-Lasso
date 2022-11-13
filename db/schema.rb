@@ -14,22 +14,20 @@
 ActiveRecord::Schema.define(version: 20221112215251) do
 
   create_table "events", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",       null: false
     t.string   "category"
     t.string   "organizer"
     t.string   "location"
+    t.integer  "users_id",    null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.text     "description"
-    t.integer  "organizer_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "username"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email",    null: false
+    t.string "username", null: false
+    t.string "password"
   end
 
 end
