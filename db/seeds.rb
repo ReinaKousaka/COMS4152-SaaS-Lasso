@@ -60,18 +60,7 @@ events = [
     }
 ]
 
-users = [
-    {
-        :email => 'user1@columbia.edu',
-        :username => 'user1',
-        :password => '123456'
-    }
-]
 
 events.each do |event|
     Event.create!(event)
-end
-
-users.each do |user|
-    User.create!(user)
 end
