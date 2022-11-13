@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='edit.css'>    
   </head>
+
+<p id='notice'><%= notice %></p>
+
 <h2>Edit Existing Event</h2>
 <%= form_tag event_path(@event), :method => :put do %>
     <%= label :event, :title, 'Title', :class => 'col-form-label' %>

@@ -7,6 +7,10 @@
     <link rel='stylesheet' type='text/css' href='new.css'>    
 
   </head>
+
+  <p id='notice'><%= notice %></p>
+
+
   <h2>Create A New Event</h2>
   <%= form_tag events_path, :class => 'form' do %>
 
@@ -41,6 +45,9 @@
     <%= label :event, :description, 'Description', :class => 'col-form-label'  %>
     <br/>
     <%= text_field :event, :description, :class => 'form-control' %>
+    <%= label :event, :user_id, 'user_id', :class => 'col-form-label'  %>
+    <br/>
+    <%= text_field :event, :user_id, :class => 'form-control' %>
 
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <br>
