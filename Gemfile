@@ -17,6 +17,8 @@ gem "simple_calendar", "~> 2.4"
 # Adding and removing foreign key constraints
 gem 'foreigner'
 
+# Hashing password
+gem 'bcrypt'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
