@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20221112215251) do
     t.string   "category"
     t.string   "organizer"
     t.string   "location"
-    t.integer  "users_id",    null: false
+    t.integer  "user_id",     null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.text     "description"

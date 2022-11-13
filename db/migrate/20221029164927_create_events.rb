@@ -6,7 +6,12 @@ class CreateEvents < ActiveRecord::Migration
       t.string :organizer
       t.string :location
 
-      t.references :users, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
+      
+      # https://stackoverflow.com/questions/17956204/foreign-key-in-rails-4
+      # according to: https://edgeguides.rubyonrails.org/4_2_release_notes.html
+      # rails4 doesn't support sqlite3 adapter
+      # t.foreign_key :users
     end
   end
 end
