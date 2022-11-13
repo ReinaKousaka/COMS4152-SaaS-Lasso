@@ -1,4 +1,7 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
+  # create bi-directional associations
+  belongs_to :user
+
   def self.all_categories
     ["athletics", "academics", "career", "culture", "fun"]
   end
@@ -14,7 +17,4 @@ class Event < ActiveRecord::Base
   def self.with_sort(sort_by)
       all.order sort_by
   end
-
-
-
 end

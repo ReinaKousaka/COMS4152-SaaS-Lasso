@@ -11,7 +11,7 @@ events = [
     {
         :title => 'Films on Furnald: The Lion King', 
         :category => "culture", 
-        :organizer => "Film Society", 
+        :organizer => "Film Society",
         :location => "Furnald Lawn", 
         :start_time => DateTime.parse('30th October 20:00'),
         :end_time => DateTime.parse('30th October 22:00'), 
@@ -20,7 +20,7 @@ events = [
     {
         :title => 'CS Coffee Chat', 
         :category => "academics", 
-        :organizer => "CS department", 
+        :organizer => "CS department",
         :location => " CS Lounge", 
         :start_time => DateTime.parse('1st November 14:00'),
         :end_time => DateTime.parse('1st November 15:00'), 
@@ -30,6 +30,7 @@ events = [
         :title => 'Undergraduate Holiday Bash', 
         :category => 'fun' , 
         :organizer => "Undergraduate Student Life", 
+        :organizer_id => 1, 
         :location => "John Jay Lounge", 
         :start_time => DateTime.parse('2nd December 18:00'),
         :end_time => DateTime.parse('2nd December 23:30'), 
@@ -53,8 +54,20 @@ events = [
         :end_time => DateTime.parse('13th November 19:00'), 
         :description => ""
     }
-  ]
+]
+
+users = [
+    {
+        :email => 'user1@columbia.edu',
+        :username => 'user1',
+        :password => '123456'
+    }
+]
 
 events.each do |event|
-  Event.create!(event)
+    Event.create!(event)
+end
+
+users.each do |user|
+    User.create!(user)
 end
