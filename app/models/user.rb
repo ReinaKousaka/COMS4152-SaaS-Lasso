@@ -1,4 +1,7 @@
+require 'bcrypt'
+
 class User < ApplicationRecord
+  has_secure_password
   validates :email, uniqueness: true
   validates :email, presence: true
   validates :username, uniqueness: true
@@ -7,4 +10,12 @@ class User < ApplicationRecord
   # https://guides.rubyonrails.org/association_basics.html#bi-directional-associations
   has_many :events
 
+  # see: https://github.com/bcrypt-ruby/bcrypt-ruby
+  def password=(raw)
+    self.password_digest = BCrypt::Password.create(raw)
+  end
+
+  def is_password?(raw)
+    BCrypt::Password.new(password_digest).is_password?(raw)
+  end
 end

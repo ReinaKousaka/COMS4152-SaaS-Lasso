@@ -9,7 +9,9 @@
 
 <body>
   <% if current_user %>
-    <%= current_user.username %>
+    Hi, <%= current_user.username %>
+  <% else %>
+    You are not signed in!
   <% end %>
   <%= yield %>
 </body>

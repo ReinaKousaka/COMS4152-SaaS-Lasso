@@ -135,6 +135,18 @@
       <%= link_to 'Search new event!', new_event_path, :class => 'btn btn-info' %>
     </div>
   </div>
+
+  <%# Authentication %>
+  <div class="card">
+    <div class="card-header">
+       Account
+    </div>
+    <div class="card-body">
+      <%= link_to 'Register', '/register', :class => 'btn btn-info' %>
+      <%= link_to 'Sign in', '/sign_in', :class => 'btn btn-info' %>
+      <%= link_to 'Sign out', '/sign_out', :class => 'btn btn-info' %>
+    </div>
+  </div>
 </div>
 
 <!--
