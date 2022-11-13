@@ -20,6 +20,7 @@ RSpec.describe EventsController, type: :controller do
                 :end_time => DateTime.parse('30th November 22:00:00')
             })
             Event.create({
+                :title => 'CS Coffee Chat'
                 :category => "academics", 
                 :organizer => "CS department", 
                 :location => " CS Lounge", 
