@@ -6,9 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
-<%= yield %>
-
+  <% if current_user %>
+    <%= current_user.username %>
+  <% end %>
+  <%= yield %>
 </body>
 </html>
