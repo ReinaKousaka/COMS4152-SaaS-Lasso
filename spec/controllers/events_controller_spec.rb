@@ -15,14 +15,16 @@ RSpec.describe EventsController, type: :controller do
                 :title => 'Films on Furnald: The Lion King', 
                 :category => "culture", 
                 :organizer => "Film Society", 
+                :user_id => 1,
                 :location => "Furnald Lawn", 
                 :start_time => DateTime.parse('30th November 20:00:00'),
                 :end_time => DateTime.parse('30th November 22:00:00')
             })
             Event.create({
-                :title => 'CS Coffee Chat'
+                :title => 'CS Coffee Chat',
                 :category => "academics", 
                 :organizer => "CS department", 
+                :user_id => 1,
                 :location => " CS Lounge", 
                 :start_time => DateTime.parse('1st November 14:00:00'),
                 :end_time => DateTime.parse('1st November 15:00:00')
@@ -37,6 +39,7 @@ RSpec.describe EventsController, type: :controller do
                     :title => 'Varsity Football vs. UPenn', 
                     :category => 'athletics', 
                     :organizer => 'Varisty Football', 
+                    :user_id => 1,
                     :location => 'Baker Stadium', 
                     :start_time => DateTime.parse('13th November 15:00:00'),
                     :end_time => DateTime.parse('13th November 19:00:00')
