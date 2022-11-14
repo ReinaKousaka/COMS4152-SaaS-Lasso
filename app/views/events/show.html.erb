@@ -1,9 +1,3 @@
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
-  </div>
-<% end %>
-
 <!--  app/views/events/show.html.erb -->
 <!DOCTYPE html>
 <body style="font-family: courier new">
@@ -15,7 +9,13 @@
    
 <head/>
 
-<p id='notice'><%= notice %></p>
+<%# <p id='notice'><%= notice</p> %>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
 
 <h2>Details about <em><%= @event.title %></em></h2>
 
