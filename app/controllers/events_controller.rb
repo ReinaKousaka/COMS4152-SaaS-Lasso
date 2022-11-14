@@ -33,10 +33,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    #TODO: fix ActiveModel::ForbiddenAttributesError
-    puts event_params
+    # augment field user_id
+    params_copy = event_params
+    params_copy[:user_id] = session[:user_id]
 
-    @event = Event.create!(event_params)
+    @event = Event.create!(params_copy)
     flash[:notice] = "Event '#{@event.title}' was successfully created."
     redirect_to events_path
   end 
@@ -48,12 +49,7 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def event_params
-    params
-      .require(:event)
-      .permit(:title, :category, :location, :organizer, :start_time, :end_time, :user_id, :description)
-      .reverse_merge(user_id: session[:user_id])
-  end
+
 
   def categories_list
     params[:categories]&.keys || session[:categories] || Event.all_categories
@@ -68,6 +64,14 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def event_params
+    params
+      .require(:event)
+      .permit(:title, :category, :location, :organizer, :start_time, :end_time, :user_id, :description)
+      # .reverse_merge(user_id: session[:user_id])
+  end
+
 
   def require_login()
     begin
