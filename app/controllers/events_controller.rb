@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  
+  before_action :require_login, only: [:update, :destroy, :create]
+
   def show 
     id = params[:id] #retrieve event ID from URI route 
     @event = Event.find(id) #look up event by unique ID 
@@ -31,7 +32,10 @@ class EventsController < ApplicationController
     redirect_to events_path(@event)
   end
 
-  def create 
+  def create
+    #TODO: fix ActiveModel::ForbiddenAttributesError
+    puts event_params
+
     @event = Event.create!(event_params)
     flash[:notice] = "Event '#{@event.title}' was successfully created."
     redirect_to events_path
@@ -45,7 +49,10 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :category, :location, :organizer, :start_time, :end_time, :user_id, :description) 
+    params
+      .require(:event)
+      .permit(:title, :category, :location, :organizer, :start_time, :end_time, :user_id, :description)
+      .reverse_merge(user_id: session[:user_id])
   end
 
   def categories_list
@@ -60,4 +67,22 @@ class EventsController < ApplicationController
     params[:sort_by] || session[:sort_by] || 'id'
   end
 
+  private
+
+  def require_login()
+    begin
+      @event = Event.find params[:id]
+      if @event.user_id != session[:user_id]
+        flash[:error] = "You must be logged in to access this section"
+        # stay in the same page
+        redirect_to :back 
+      end
+    rescue Exception => e
+      unless current_user
+        flash[:error] = "You must be logged in to access this section"
+        # stay in the same page
+        redirect_to :back 
+      end
+    end
+  end
 end

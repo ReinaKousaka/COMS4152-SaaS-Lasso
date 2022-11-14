@@ -1,3 +1,10 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+
 <!DOCTYPE html>
 <body style="font-family: courier new">
 <html>
@@ -45,10 +52,7 @@
     <%= label :event, :description, 'Description', :class => 'col-form-label'  %>
     <br/>
     <%= text_field :event, :description, :class => 'form-control' %>
-    <%= label :event, :user_id, 'user_id', :class => 'col-form-label'  %>
-    <br/>
-    <%= text_field :event, :user_id, :class => 'form-control' %>
-
+    
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <br>
   <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
