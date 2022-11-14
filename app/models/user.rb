@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   # see: https://github.com/bcrypt-ruby/bcrypt-ruby
   def password=(raw)
+    # # temporary variable, not in db
+    # @password = raw
     self.password_digest = BCrypt::Password.create(raw)
   end
 

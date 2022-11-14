@@ -60,7 +60,18 @@ events = [
     }
 ]
 
+users = [
+    {
+        :email => 'admin@lasso.com',
+        :username => 'Admin',
+        :password_digest => BCrypt::Password.create('admin')
+    }
+]
 
 events.each do |event|
     Event.create!(event)
+end
+
+users.each do |user|
+    User.create!(user)
 end
