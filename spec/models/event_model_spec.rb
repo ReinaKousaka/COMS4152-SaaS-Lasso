@@ -3,12 +3,14 @@ require 'rails_helper'
 RSpec.describe Event, :type => :model do
 
     context 'Events model basics' do 
+        let!(:user1) { FactoryGirl.create(:user) }
         before :each do 
             Event.delete_all 
             Event.create({
                 :title => 'Films on Furnald: The Lion King', 
                 :category => "culture", 
                 :organizer => "Film Society", 
+                :user_id => 1,
                 :location => "Furnald Lawn", 
                 :start_time => DateTime.parse('30th October 20:00:00'),
                 :end_time => DateTime.parse('30th October 22:00:00')
@@ -17,6 +19,7 @@ RSpec.describe Event, :type => :model do
                 :title => 'CS Coffee Chat', 
                 :category => "academic", 
                 :organizer => "CS Department", 
+                :user_id => 1,
                 :location => "CS Lounge", 
                 :start_time => DateTime.parse('28th October 14:00:00'),
                 :end_time => DateTime.parse('28th October 16:00:00')
@@ -26,6 +29,7 @@ RSpec.describe Event, :type => :model do
                 :title => 'Halloween Party', 
                 :category => "fun", 
                 :organizer => "Social Club", 
+                :user_id => 1,
                 :location => "Lower Plaza", 
                 :start_time => DateTime.parse('31th October 19:00:00'),
                 :end_time => DateTime.parse('31th October 24:00:00')
