@@ -5,8 +5,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :category
       t.string :organizer
       t.string :location
-
-      t.references :user, null: false, foreign_key: true
+      # https://stackoverflow.com/questions/35359029/pgundefinedtable-error-relation-musicians-does-not-exist
+      # foreign key doesn't work on heroku PostgreSQL
+      t.references :user, null: false
       
       # https://stackoverflow.com/questions/17956204/foreign-key-in-rails-4
       # according to: https://edgeguides.rubyonrails.org/4_2_release_notes.html
