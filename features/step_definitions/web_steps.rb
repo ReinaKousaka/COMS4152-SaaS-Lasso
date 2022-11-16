@@ -61,9 +61,9 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
-When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
-  fill_in(field, :with => value)
-end
+# When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
+#   fill_in(field, :with => value)
+# end
 
 # Use this to fill in an entire form with data from a table. Example:
 #
@@ -106,20 +106,20 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
     expect(page).to have_content(text)
 end
   
-Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
-    regexp = Regexp.new(regexp)
+# Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
+#     regexp = Regexp.new(regexp)
   
-    assert page.has_xpath?('//*', :text => regexp)
-end
+#     assert page.has_xpath?('//*', :text => regexp)
+# end
   
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
       expect(page).not_to have_content(text)
 end
   
-Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
-    regexp = Regexp.new(regexp)
-    assert page.has_no_xpath?('//*', :text => regexp)
-end
+# Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
+#     regexp = Regexp.new(regexp)
+#     assert page.has_no_xpath?('//*', :text => regexp)
+# end
 
 # Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
 #   with_scope(parent) do
@@ -181,8 +181,6 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
     current_path.should == path_to(page_name)
-  else
-    assert_equal path_to(page_name), current_path
   end
 end
 
