@@ -90,6 +90,11 @@ Background: events have been added to database
     Then I should see "You must be logged in to access this section"
     And I should not see the following events: "Coffee Chat"
 
+  Scenario: Delete an event without access
+    When I go to the details page for "CS Coffee Chat"
+    When I follow "Delete"
+    Then I should see "You must be logged in to access this section"
+
 
 
 

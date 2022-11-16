@@ -5,20 +5,12 @@ Given /the following events exist/ do |event_table|
     end
 end
 
-Given /the following users exist/ do |user_table|
-  user_table.hashes.each do |user|
-    User.create user
-  end
-end
   
 
 Then /(.*) seed events should exist/ do | n_seeds |
     expect(Event.count).to eq n_seeds.to_i
 end
 
-Then /(.*) seed users should exist/ do | n_seeds |
-  expect(User.count).to eq n_seeds.to_i
-end
 
 Then /^(?:|I )should be on the edit page for "(.+)"$/ do |event_name|
   event_id = Event.find_by(title: event_name).id
@@ -106,7 +98,8 @@ end
 
 Given /^I log in as (.*)$/ do |name|
   step "I log"
-
+end
+ 
 Then /^the field "(.+)" is empty/ do |field|
   field = find_field(field)
   expect(field.value).to eq("")
