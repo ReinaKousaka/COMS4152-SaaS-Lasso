@@ -120,7 +120,7 @@
         <%= date %>
           <% meetings.each do |meeting| %>
           <div>
-            <%= link_to "#{meeting.title}", event_path(meeting)  %>
+            <%= link_to "#{meeting.title}", event_path(meeting.id)  %>
           </div>
         <% end %>
       <% end %>

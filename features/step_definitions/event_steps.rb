@@ -4,10 +4,30 @@ Given /the following events exist/ do |event_table|
       Event.create event
     end
 end
+
+Given /the following users exist/ do |user_table|
+  user_table.hashes.each do |user|
+    User.create user
+  end
+end
   
 
 Then /(.*) seed events should exist/ do | n_seeds |
     expect(Event.count).to eq n_seeds.to_i
+end
+
+Then /(.*) seed users should exist/ do | n_seeds |
+  expect(User.count).to eq n_seeds.to_i
+end
+
+Then /^(?:|I )should be on the edit page for "(.+)"$/ do |event_name|
+  event_id = Event.find_by(title: event_name).id
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should == path_to(edit_event_path(event_id))
+  else
+    assert_equal path_to(edit_event_path(event_id)), current_path
+  end
 end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
@@ -86,4 +106,17 @@ end
 
 Given /^I log in as (.*)$/ do |name|
   step "I log"
+
+Then /^the field "(.+)" is empty/ do |field|
+  field = find_field(field)
+  expect(field.value).to eq("")
+end
+
+Then /^the field "(.+)" should be null/ do |field|
+  field = find_field(field)
+  expect(field.value).to eq(nil)
+end
+
+Then /^the field "(.+)" should be with error/ do |field|
+  expect(page).to have_content("#{field.capitalize} can't be blank")
 end

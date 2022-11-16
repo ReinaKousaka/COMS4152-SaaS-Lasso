@@ -22,6 +22,10 @@ module NavigationHelpers
         event_path(event)
       when /^the Create New Event page/
         '/events/new'
+      when /^the Register page/
+        '/register'
+      when /^the Sign In page/
+        '/sign_in'
 
   
      #   when /^the Similar Movies page for "(.+)"/
