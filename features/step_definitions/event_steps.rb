@@ -5,7 +5,6 @@ Given /the following events exist/ do |event_table|
     end
 end
 
-  
 
 Then /(.*) seed events should exist/ do | n_seeds |
     expect(Event.count).to eq n_seeds.to_i
@@ -96,10 +95,14 @@ Then /I should see "(.*)" has been deleted/ do |event_name|
   expect(page).not_to have_content(event_name)
 end
 
+<<<<<<< Updated upstream
 Given /^I log in as (.*)$/ do |name|
   step "I log"
 end
  
+=======
+
+>>>>>>> Stashed changes
 Then /^the field "(.+)" is empty/ do |field|
   field = find_field(field)
   expect(field.value).to eq("")

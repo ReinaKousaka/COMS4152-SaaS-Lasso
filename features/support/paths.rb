@@ -26,7 +26,6 @@ module NavigationHelpers
         '/register'
       when /^the Sign In page/
         '/sign_in'
-
   
      #   when /^the Similar Movies page for "(.+)"/
      #     search_similar_movies_path($1)
