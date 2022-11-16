@@ -107,7 +107,7 @@ RSpec.describe EventsController, type: :controller do
                 
                 expect(flash[:notice]).to eq("Event '#{event1.title}' was successfully updated.")
                 expect(event1.category).to eql('culture')
-                expect(response).to redirect_to(events_path(event1))
+                expect(response).to redirect_to(events_path)
             end
 
             it 'Failed to update an movie when logged out' do
