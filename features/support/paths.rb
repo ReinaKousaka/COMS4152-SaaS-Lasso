@@ -22,6 +22,7 @@ module NavigationHelpers
         event_path(event)
       when /^the Create New Event page/
         '/events/new'
+
   
      #   when /^the Similar Movies page for "(.+)"/
      #     search_similar_movies_path($1)

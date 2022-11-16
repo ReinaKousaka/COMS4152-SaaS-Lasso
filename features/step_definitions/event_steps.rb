@@ -83,3 +83,7 @@ Then /I should see "(.*)" has been deleted/ do |event_name|
   #  page.body is the entire content of the page as a string.
   expect(page).not_to have_content(event_name)
 end
+
+Given /^I log in as (.*)$/ do |name|
+  step "I log"
+end

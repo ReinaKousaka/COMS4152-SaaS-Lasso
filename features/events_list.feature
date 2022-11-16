@@ -7,20 +7,57 @@ Feature: display list of Events
 Background: events have been added to database
 
   Given the following events exist:
-  | title                 | category  | organizer | location  | start_time | end_time
-  | Films on Furnald: The Lion King | culture | Film Society | Furnald Lawn  | 30th October 20:00:00 | 30th October 20:00:00
-  | CS Coffee Chat | fun | CS department | Mudd | 1st November 14:00:00 | 1st November 14:00:00
-  | Undergraduate Holiday Bash | fun | Undergraduate Student Life | John Jay Lounge | 2nd December 18:00:00 | 2nd December 18:00:00
-  | Networking Roundtable in Finance | career | CCE | Lerner Audiotorium | 15th November 14:00:00 | 15th November 14:00:00
-  | Varsity Football vs. UPenn | athletics | Varisty Football | Baker Stadium | 13th November 15:00:00 |  13th November 15:00:00
+  | title                 | category  | organizer | location  | user_id | start_time | end_time |
+  | Films on Furnald: The Lion King | culture | Film Society | Furnald Lawn  | 1| 30th October 20:00:00 | 30th October 20:00:00 |
+  | CS Coffee Chat | fun | CS department | Mudd | 1 | 1st November 14:00:00 | 1st November 14:00:00 |
+  | Undergraduate Holiday Bash | fun | Undergraduate Student Life | John Jay Lounge | 1 | 2nd December 18:00:00 | 2nd December 18:00:00 |
+  | Networking Roundtable in Finance | career | CCE | Lerner Audiotorium | 1 | 15th November 14:00:00 | 15th November 14:00:00 |
+  | Varsity Football vs. UPenn | athletics | Varisty Football | Baker Stadium | 1 | 13th November 15:00:00 |  13th November 15:00:00 |
+
 
   And I am on the Lasso home page
   Then 5 seed events should exist
 
+  Given the following users exist:
+  | email | username | password |
+  | admin@lasso.com | Admin | 123 |
+
+
+  Given I am on the Lasso home page
+  When I follow "Register"
+  And I fill in "email" with "tatum@lasso.com"
+  And I fill in "username" with "Tatum"
+  And I fill in "password" with "admin"
+  And I press "Register"
+  Then I should be on the Lasso home page
+  And I should see "Hi, Tatum"
+
+  Then 2 seed users should exist
+
+
+
+Scenario: Sign into an Account
+  Given I am on the Lasso home page
+  Then I follow "Sign in"
+  And I fill in "email" with "tatum@lasso.com"
+  And I fill in "password" with "admin"
+  And I press "Sign In"
+  Then I should be on the Lasso home page
+  And I should see "Hi, Tatum"
+
+Scenario: Sign into Seed Account
+  Given I am on the Lasso home page
+  Then I follow "Sign in"
+  And I fill in "email" with "admin@lasso.com"
+  And I fill in "password" with "123"
+  And I press "Sign In"
+  Then I should be on the Lasso home page
+  And I should see "Hi, Admin"
+
 
 Scenario: Add an event
   Given I am on the Lasso home page
-  When I follow "Add new event"
+  Then I follow "Add new event"
   Then I should be on the Create New Event page
   When I fill in "Title" with "Halloween Party"
   And I select "fun" from "event_category"
@@ -33,16 +70,33 @@ Scenario: Add an event
   And I should see "Halloween Party"
 
 Scenario: change name for existing event
-  When I go to the edit page for "CS Coffee Chat"
+  Given I am on the Lasso home page
+  When I follow "CS Coffee Chat"
+  And I follow "Edit"
   And  I fill in "Title" with "Coffee Chat"
   And  I press "Update event Info"
-  Then I should see "Coffee Chat"
+  And I follow "Cancel" 
+  Then I should be on the Lasso home page
+  And I should see "Coffee Chat"
 
 Scenario: change category for existing event
-  When I go to the edit page for "Films on Furnald: The Lion King"
-  And  I select "fun" from "Category"
+  Given I am on the Lasso home page
+  When I follow "Networking Roundtable in Finance"
+  And I follow "Edit"
+  And I select "fun" from "Category"
   And  I press "Update event Info"
-  Then the category of "Films on Furnald: The Lion King" should be "fun"
+  And I follow "Cancel"
+  Then I should be on the Lasso home page
+  And I follow "Networking Roundtable in Finance"
+  Then I should see "fun"
+
+Scenario: Select a catergory
+  Given I am on the Lasso home page
+  Then I follow "Add new event"
+  Then I should be on the Create New Event page
+  When I fill in "Title" with "Halloween Party"
+  And I select "fun" from "event_category"
+  Then I should see "fun"
 
 Scenario: add start time of existing event
   When I go to the edit page for "CS Coffee Chat"
