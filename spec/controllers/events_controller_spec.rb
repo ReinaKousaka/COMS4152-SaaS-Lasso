@@ -49,7 +49,7 @@ RSpec.describe EventsController, type: :controller do
 
                 expect(flash[:error]).to eq("You must be logged in to access this section")
                 expect(Event.all.count).to eq(original_events_count)
-                response.should redirect_to '/events'
+                expect(response).to redirect_to('/events')
             end
         end
 
@@ -77,7 +77,7 @@ RSpec.describe EventsController, type: :controller do
 
                 expect(flash[:error]).to eq("You must be logged in to access this section")
                 expect(Event.all.count).to eq(original_events_count)
-                response.should redirect_to '/events'
+                expect(response).to redirect_to('/events')
             end
         end
 
@@ -119,7 +119,7 @@ RSpec.describe EventsController, type: :controller do
                 
                 expect(flash[:error]).to eq("You must be logged in to access this section")
                 expect(event1.category).to eql(original_event_category)
-                response.should redirect_to '/events'
+                expect(response).to redirect_to('/events')
             end
         end
 
@@ -175,7 +175,7 @@ RSpec.describe EventsController, type: :controller do
                 get :index
 
                 assert_response :success
-                response.should render_template('index')
+                expect(response).to render_template('index')
 
                 expect(@categories_to_show_hash).to eq(nil)
                 expect(@sort_by).to eq(nil)
