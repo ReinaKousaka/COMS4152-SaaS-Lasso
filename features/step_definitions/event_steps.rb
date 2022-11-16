@@ -5,11 +5,26 @@ Given /the following events exist/ do |event_table|
     end
 end
 
+<<<<<<< Updated upstream
+=======
+Given /the following users exist/ do |user_table|
+  user_table.hashes.each do |user|
+    User.create user
+  end
+end
+  
+>>>>>>> Stashed changes
 
 Then /(.*) seed events should exist/ do | n_seeds |
     expect(Event.count).to eq n_seeds.to_i
 end
 
+<<<<<<< Updated upstream
+=======
+Then /(.*) seed users should exist/ do | n_seeds |
+  expect(User.count).to eq n_seeds.to_i
+end
+>>>>>>> Stashed changes
 
 Then /^(?:|I )should be on the edit page for "(.+)"$/ do |event_name|
   event_id = Event.find_by(title: event_name).id
@@ -96,10 +111,14 @@ Then /I should see "(.*)" has been deleted/ do |event_name|
 end
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Given /^I log in as (.*)$/ do |name|
   step "I log"
 end
  
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes

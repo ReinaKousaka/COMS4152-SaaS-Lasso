@@ -7,7 +7,6 @@ Feature: display list of Events
 Background: events have been added to database
 
   Given the following events exist:
-<<<<<<< Updated upstream
   | title                 | category  | organizer | location  | user_id | start_time | end_time |
   | Films on Furnald: The Lion King | culture | Film Society | Furnald Lawn  | 1| 2nd November 20:00:00 | 2nd November 20:00:00 |
   | CS Coffee Chat | fun | CS department | Mudd | 1 | 1st November 14:00:00 | 1st November 14:00:00 |
@@ -15,14 +14,6 @@ Background: events have been added to database
   | Networking Roundtable in Finance | career | CCE | Lerner Audiotorium | 1 | 15th November 14:00:00 | 15th November 14:00:00 |
   | Varsity Football vs. UPenn | athletics | Varisty Football | Baker Stadium | 1 | 13th November 15:00:00 |  13th November 15:00:00 |
 
-=======
-  | title                 | category  | organizer | location  | user_id | start_time | end_time
-  | Films on Furnald: The Lion King | culture | Film Society | Furnald Lawn  | 1 | 30th October 20:00:00 | 30th October 20:00:00
-  | CS Coffee Chat | fun | CS department | Mudd | 1 | 1st November 14:00:00 | 1st November 14:00:00
-  | Undergraduate Holiday Bash | fun | Undergraduate Student Life | John Jay Lounge | 1 | 2nd December 18:00:00 | 2nd December 18:00:00
-  | Networking Roundtable in Finance | career | CCE | Lerner Audiotorium | 1 | 15th November 14:00:00 | 15th November 14:00:00
-  | Varsity Football vs. UPenn | athletics | Varisty Football | Baker Stadium | 1 | 13th November 15:00:00 |  13th November 15:00:00
->>>>>>> Stashed changes
 
   And I am on the Lasso home page
   Then 5 seed events should exist
