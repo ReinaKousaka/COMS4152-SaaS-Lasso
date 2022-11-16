@@ -5,7 +5,6 @@ Given /the following events exist/ do |event_table|
     end
 end
 
-
   
 
 Then /(.*) seed events should exist/ do | n_seeds |
@@ -13,35 +12,12 @@ Then /(.*) seed events should exist/ do | n_seeds |
 end
 
 
-
-Then /^(?:|I )should be on the edit page for "(.+)"$/ do |event_name|
-  event_id = Event.find_by(title: event_name).id
-  current_path = URI.parse(current_url).path
-  if current_path.respond_to? :should
-    current_path.should == path_to(edit_event_path(event_id))
-  else
-    assert_equal path_to(edit_event_path(event_id)), current_path
-  end
-end
-
-Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-    #  ensure that that e1 occurs before e2.
-    #  page.body is the entire content of the page as a string.
-    expect(page.body.index(e1) < page.body.index(e2))
-end
-  
 When /I (un)?check the following categories: (.*)/ do |uncheck, category_list|
     category_list.split(', ').each do |category|
     step %{I #{uncheck.nil? ? '' : 'un'}check "categories_#{category}"}
     end
 end
   
-Then /I should see all the events/ do
-    # Make sure that all the movies in the app are visible in the table
-  Event.all.each do |events|
-    step %{I should see "#{event.title}"}
-  end
-end
 
 Then /^I should (not )?see the following events: (.*)$/ do |no, event_list|
   # Take a look at web_steps.rb Then /^(?:|I )should see "([^"]*)"$/
@@ -85,12 +61,6 @@ When /^(?:|I )select datetime "([^ ]*) ([^ ]*) ([^ ]*) - ([^:]*):([^"]*)" as the
   select(minute, :from => "#{field}_5i")
 end
 
-Then /^the start time of "(.+)" should be "(.+)"/ do |event_name, start_time|
-  event = Event.find_by(title: event_name)
-  visit event_path(event)
-  expect(event.start_time).to eq start_time
-end
-
 
 Then /I should see "(.*)" has been deleted/ do |event_name|
   #  ensure that that e1 occurs before e2.
@@ -98,10 +68,6 @@ Then /I should see "(.*)" has been deleted/ do |event_name|
   expect(page).not_to have_content(event_name)
 end
 
-
-Given /^I log in as (.*)$/ do |name|
-  step "I log"
-end
  
 Then /^the field "(.+)" is empty/ do |field|
   field = find_field(field)
