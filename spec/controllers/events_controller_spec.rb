@@ -28,7 +28,7 @@ RSpec.describe EventsController, type: :controller do
                 }
                 
                 login(user1.id)
-                get :create, event: event
+                post :create, event: event
 
                 expect(flash[:notice]).to eq("Event '#{event[:title]}' was successfully created.")
                 expect(response).to redirect_to(events_path)
