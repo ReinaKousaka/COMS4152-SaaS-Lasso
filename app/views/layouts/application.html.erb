@@ -8,11 +8,6 @@
 </head>
 
 <body>
-  <% if current_user %>
-    Hi, <%= current_user.organizer_name %>
-  <% else %>
-    You are not signed in!
-  <% end %>
   <%= yield %>
 </body>
 </html>
