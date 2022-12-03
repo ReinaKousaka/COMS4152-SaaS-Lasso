@@ -3,7 +3,8 @@ class EventsController < ApplicationController
 
   def show 
     id = params[:id] #retrieve event ID from URI route 
-    @event = Event.find params[:id] #look up event by unique ID 
+    # include user then look up event by unique ID 
+    @event = Event.includes(:user).find params[:id]
   end
 
   def index
