@@ -37,11 +37,7 @@ Contact Email: <em> <%= @user.email %></em>
       <th>Event</th>
       <th>Category</th>
       <th>Location</th>
-      <th>
-      <%= link_to 'Start Time',
-              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
-              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
-      </th>
+      <th>Start Time</th>
       <th>End Time</th>
     </tr>
   <tbody>
@@ -76,11 +72,7 @@ Contact Email: <em> <%= @user.email %></em>
       <th>Event</th>
       <th>Category</th>
       <th>Location</th>
-      <th>
-      <%= link_to 'Start Time',
-              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
-              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
-      </th>
+      <th>Start Time</th>
       <th>End Time</th>
     </tr>
   </thead>
