@@ -18,7 +18,15 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-<h1>Sign In</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="navbar navbar-dark bg-dark shadow-sm">
+  <h2 style="color: white"> Sign In </h2>
+ <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <%= link_to 'Events Hub', events_path, :class => 'btn btn-secondary mr-sm-2' %>
+  </li>
+</ul>
+</div>
 
 
 <p id='notice'><%= notice %></p>
@@ -32,11 +40,11 @@
       <div class="row gx-lg-5 align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
           <h1 class="my-5 display-3 fw-bold ls-tight">
-            The best organize <br />
-            <span class="text-primary">for your events</span>
+            your hub for<br />
+            <span class="text-primary">all the buzz</span>
           </h1>
           <p style="color: hsl(217, 10%, 50.8%)">
-           Let's us to help you organize the event and share with other people
+          campus' one-stop shop for community events
           </p>
         </div>
 
