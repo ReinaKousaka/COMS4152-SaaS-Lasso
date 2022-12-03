@@ -5,16 +5,17 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: user_params[:email])
+    flash.clear
     if @user
       if @user.is_password?(user_params[:password])
         session[:user_id] = @user.id
         redirect_to root_path
       else
-        flash[:notice] = 'Incorrect Password!'
+        flash[:danger] = 'Incorrect Password!'
         render :new
       end
     else
-      flash[:notice] = 'The Account Does Not Exist!'
+      flash[:warning] = 'The Account Does Not Exist!'
       render :new
     end
   end
