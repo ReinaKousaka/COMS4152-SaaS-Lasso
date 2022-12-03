@@ -37,6 +37,26 @@ class EventsController < ApplicationController
     params_copy = event_params
     params_copy[:user_id] = session[:user_id]
 
+    start_time = DateTime.new(event_params["start_time(1i)"].to_i, 
+                        event_params["start_time(2i)"].to_i,
+                        event_params["start_time(3i)"].to_i,
+                        event_params["start_time(4i)"].to_i,
+                        event_params["start_time(5i)"].to_i)
+
+    end_time = DateTime.new(event_params["end_time(1i)"].to_i, 
+                        event_params["end_time(2i)"].to_i,
+                        event_params["end_time(3i)"].to_i,
+                        event_params["end_time(4i)"].to_i,
+                        event_params["end_time(5i)"].to_i)
+
+
+    if start_time > end_time
+         flash[:error] = "Event end time must be after event start time."
+         # stay in the same page
+         redirect_to :back
+         return 
+    end     
+    
     @event = Event.create!(params_copy)
     flash[:notice] = "Event '#{@event.title}' was successfully created."
     redirect_to events_path
