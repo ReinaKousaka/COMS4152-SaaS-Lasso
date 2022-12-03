@@ -10,6 +10,25 @@ table,
       form {
   text-align: center;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  height: 100px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .button {
   border: none;
   color: white;
@@ -22,22 +41,6 @@ table,
   cursor: pointer;
   font-family: courier new; 
 }
-.text-center {
-  text-align: center;
-}
 
 .button1 {background-color: #4CAF50;} /* Green */
 .button2 {background-color: #008CBA;} /* Blue */
-.container {
-  height: 100px;
-  position: relative;
-}
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-

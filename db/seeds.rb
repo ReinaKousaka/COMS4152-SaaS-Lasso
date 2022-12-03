@@ -59,12 +59,12 @@ users = [
     {
         :email => 'admin@lasso.com',
         :organizer_name => 'Admin',
-        :password_digest => BCrypt::Password.create('admin')
+        :password_digest => BCrypt::Password.create('admin123')
     }, 
     {
         :email => 'cs@lasso.com',
         :organizer_name => 'CS Department',
-        :password_digest => BCrypt::Password.create('admin')
+        :password_digest => BCrypt::Password.create('admin123')
     }
 ]
 
