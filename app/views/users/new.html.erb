@@ -12,65 +12,23 @@
     <title>Register</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='new.css'>    
-
   </head>
 
-  <style>
-  html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, p { 
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: courier new
-      font-size: 14px;
-      color: #666;
-      line-height: 22px;
-      }
-      h2 {
-      font-weight: 400;
-      }
-      .testbox {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: inherit;
-      padding: 20px;
-      }
-      form {
-      width: 97%;
-      padding: 20px;
-      border-radius: 6px;
-      background: #fff;
-      box-shadow: 0 0 20px 0 #095484; 
-      }
-      input, select {
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      }
-      input {
-      width: calc(100% - 10px);
-      padding: 5px;
-      }
-    </style>
-
   <p id='notice'><%= notice %></p>
-<h2>Register</h2>
-<%# <p>Find me in app/views/users/new.html.erb</p> %>
+  <h2>Register</h2>
 
-<form action='/users' method='post'>
-    <input type='hidden' name='authenticity_token', value='<%= form_authenticity_token %>'>
+  <form action='/users' method='post'>
+      <input type='hidden' name='authenticity_token', value='<%= form_authenticity_token %>'>
 
-    <label for='email'>Email</label>
-    <input type='email' id='email' name='user[email]' value='<%= @user.email %>' />
+      <label for='email'>Email</label>
+      <input type='email' id='email' name='user[email]' value='<%= @user.email %>' />
 
-    <label for='organizer_name'>Organizer Name</label>
-    <input type='organizer_name' id='organizer_name' name='user[organizer_name]' value='<%= @user.organizer_name %>' />
+      <label for='organizer_name'>Organizer Name</label>
+      <input type='organizer_name' id='organizer_name' name='user[organizer_name]' value='<%= @user.organizer_name %>' />
 
-    <label for='password'>Password</label>
-    <input type='password' id='password' name='user[password]' />
-    
-    <%= submit_tag 'Register', :class => 'btn btn-primary' %>
-</form>
+      <label for='password'>Password</label>
+      <input type='password' id='password' name='user[password]' />
+      
+      <%= submit_tag 'Register', :class => 'btn btn-primary' %>
+  </form>
+</html>
