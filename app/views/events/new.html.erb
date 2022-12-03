@@ -6,6 +6,7 @@
 
 
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body style="font-family: courier new">
 <html>
   <head>
@@ -17,7 +18,7 @@
 
   <p id='notice'><%= notice %></p>
 
-
+<div class="container mt-4">
   <h2>Create A New Event</h2>
   <%= form_tag events_path, :class => 'form' do %>
 
@@ -56,5 +57,6 @@
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <br>
   <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
-<% end %>
+  <% end %>
+</div>
 </html>

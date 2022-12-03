@@ -19,18 +19,20 @@
 
 
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-2">
-      <div class="card">
-        <div class="card-header">
-          <h3 style="text-align:center">Events Filter</h3>
-        </div>
-        <div class="card-body">
-          <%= form_tag events_path, method: :get, id: 'categories_form' do %>
-            <%= hidden_field_tag 'sort_by', @sort_by %>
-            Include:
-            <% @all_categories.each do |category| %>
+
+<div class="container mt-2">
+<div class="row">
+  <div class="col-2">
+    <div class="card">
+      <div class="card-header">
+        <h3 style="text-align:center">Events Filter</h3>
+      </div>
+      <div class="card-body">
+        <%= form_tag events_path, method: :get, id: 'categories_form' do %>
+          <%= hidden_field_tag 'sort_by', @sort_by %>
+          Include:
+        
+          <% @all_categories.each do |category| %>
               <li class="list-group-item border-0 text-center">
                 <div class="form-check  form-check-inline align-items-center">
                   <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
@@ -41,9 +43,9 @@
             <% end %>
             <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-info' %>
           <% end %>
-        </div>
       </div>
     </div>
+  </div>
 
   <div class="col-10">
     <div class="card">
@@ -58,28 +60,32 @@
         <% end %>
       </div>
     </div>
-
-  <div class="card">
-    <div class="card-header">
-       Have an event you want to loop Columbia in about?
+    <div class="card">
+      <div class="card-header">
+        Have an event you want loop Columbia in about?
+      </div>
+      <div class="card-body">
+        <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
+      </div>
     </div>
-    <div class="card-body">
-      <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
+    <%# Search %>
+    <div class="card">
+      <div class="card-header">
+        Search an event you want to join!
+      </div>
+      <div class="card-body">
+
+        <%= form_tag search_path, method: :get, id: 'searchs_form' do %>
+            <!-- Search Input -->
+            <div class="form-inline my-2 my-lg-0">
+            <input type='search' id='search_by' name='search_by' placeholder="Search Title" class="form-control mr-sm-2" />
+            <button submit_tag 'Search', id = "search_submit", type="search", class="btn btn-info mr-sm-2">
+                    Search
+            </button>
+            </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <%# Search %>
-  <div class="card">
-    <div class="card-header">
-       Search an event you want to join!
-    </div>
-    <div class="card-body">
-      <%= form_tag search_path, method: :get, id: 'searchs_form' do %>
-        <div class="form-inline my-2 my-lg-0">
-        <input type='search' id='search_by' name='search_by' placeholder="Search Title" class="form-control mr-sm-2" />
-        <button submit_tag id = "search_submit", type="search", class="btn btn-info mr-sm-2">Search</button>
-        </div>
-      <% end %>
-    </div>
-  </div>
+</div>
 </div>

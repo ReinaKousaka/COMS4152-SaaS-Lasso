@@ -32,47 +32,56 @@ text-align: center;}
 
   </head>
 
+<div class="container mt-2">
+<div class="row">
+    <div class="card">
+       <div class="card-header">
+          <h3> <%= @search_result.size %> Results for "<%=@search_param%>" </h3>
+       </div>
+       <div class="card-body">
+        <table class="table table-hover col-md-12" style="border:2px solid gray;margin-left:auto;margin-right:auto;" id="past_events">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Category</th>
+              <th>Organizer </th>
+              <th>Location</th>
+              <th>
+              <%= link_to 'Start Time',
+                      events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
+                      id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
+              </th>
+              <th>End Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @search_result.each do |event| %>
+              <tr>
+                <td>
+                <%= link_to "#{event.title}", event_path(event) %>
+                </td>
+                <td>
+                  <%= event.category %>
+                </td>
+                <td>
+                <%= link_to "#{event.user.organizer_name}", user_path(event.user_id) %>
+                </td>
+                <td>
+                <%= event.location%>
+                </td>
+                <td>
+                <%= event.start_time %>
+                </td>
+                <td>
+                <%= event.end_time %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+       </div>
+    </div>
 
-<table class="table table-hover col-md-12" style="border:2px solid gray;margin-left:auto;margin-right:auto;" id="past_events">
-<caption> <em> <%= @search_result.size %> </em> Results for "  <em> <%= @search_param %> </em> " </caption>
-  <thead>
-    <tr>
-      <th>Event</th>
-      <th>Category</th>
-      <th>Organizer </th>
-      <th>Location</th>
-      <th>
-      <%= link_to 'Start Time',
-              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
-              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
-      </th>
-      <th>End Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @search_result.each do |event| %>
-      <tr>
-        <td>
-         <%= link_to "#{event.title}", event_path(event) %>
-        </td>
-        <td>
-          <%= event.category %>
-        </td>
-        <td>
-        <%= link_to "#{event.user.organizer_name}", user_path(event.user_id) %>
-        </td>
-        <td>
-        <%= event.location%>
-        </td>
-        <td>
-        <%= event.start_time %>
-        </td>
-        <td>
-        <%= event.end_time %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+</div>
+</div>
 <html/>
