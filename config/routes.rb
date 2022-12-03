@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :events
   root :to => redirect('/events')
-
+  get '/search', to: 'events#search'
+  
   get '/register', to: 'users#new'
   resources :users, only: [:create, :show]
 

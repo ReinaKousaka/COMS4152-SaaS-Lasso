@@ -1,3 +1,4 @@
+
 <% flash.each do |type, msg| %>
   <div class="alert alert-info">
     <%= msg %>
@@ -14,20 +15,65 @@
     <link rel='stylesheet' type='text/css' href='new.css'>
   </head>
 
-  <p id='notice'><%= notice %></p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <h2>Sign In</h2>
 
-  <form action='/sessions' method='post'>
-      <input type='hidden' name='authenticity_token', value='<%= form_authenticity_token %>'>
+<h1>Sign In</h1>
 
-      <label for='email'>Email</label>
-      <%# <input type='email' id='email' name='user[email]' value='<%= @user.email %>
-      <input type='email' id='email' name='user[email]'/>
 
-      <label for='password'>Password</label>
-      <input type='password' id='password' name='user[password]' />
-      
-      <input type='submit' value='Sign In'>
-  </form>
-</html>
+<p id='notice'><%= notice %></p>
+
+
+<!-- Section: Design Block -->
+<section class="">
+  <!-- Jumbotron -->
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            The best organize <br />
+            <span class="text-primary">for your events</span>
+          </h1>
+          <p style="color: hsl(217, 10%, 50.8%)">
+           Let's us to help you organize the event and share with other people
+          </p>
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form action='/sessions' method='post'>
+               <input type='hidden' name='authenticity_token', value='<%= form_authenticity_token %>'>
+
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type='email' id='email' name='user[email]' value='<%= @user.email %>' class="form-control"/>
+                  <label class="form-label" for="email">Email</label>
+                  
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type='password' id='password' name='user[password]' class="form-control" />
+                  <label class="form-label" for="password">Password</label>
+                </div>
+
+        
+                <!-- Submit button -->
+                <button submit_tag 'register' type="submit" class="btn btn-primary btn-block mb-4">
+                  Sign In
+                </button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+

@@ -14,6 +14,8 @@ class Event < ApplicationRecord
     end
   end
 
+
+
   def self.with_sort(sort_by)
       all.order sort_by
   end

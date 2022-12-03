@@ -12,11 +12,21 @@ class EventsController < ApplicationController
     @events = Event.with_categories(categories_list, sort_by)
     @categories_to_show_hash = categories_hash
     @sort_by = sort_by
+    @search_by = search_by
     session['categories'] = categories_list
     session['sort_by'] = @sort_by
+    session['search_by'] = @search_by
 
     start_date = params.fetch(:start_date, Date.today).to_date
     @meetings = @events.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    if session['user_id'] 
+      @sign_in_display = 'display:none'
+      @sign_out_display = ''
+    else 
+      @sign_in_display = ''
+      @sign_out_display = 'display:none'
+    end
+
   end 
 
   def new 
@@ -70,6 +80,20 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def search
+    # if params[:search].blank?
+    #   puts 'search param'
+    #   puts params[:search]
+    #   flash[:notice] = "Didn't find any event!"
+    #   redirect_to events_path
+    # else
+      puts 'search param'
+      puts params[:search_by]
+      @search_param = params[:search_by].downcase
+      @search_result = Event.all.where("lower(title) LIKE :search", search:"%#{@search_param}%")
+    # end
+  end
+
 
 
   def categories_list
@@ -84,6 +108,9 @@ class EventsController < ApplicationController
     params[:sort_by] || session[:sort_by] || 'id'
   end
 
+  def search_by
+    params[:search_by] || session[:search_by] || 'title'
+  end
   private
 
   def event_params

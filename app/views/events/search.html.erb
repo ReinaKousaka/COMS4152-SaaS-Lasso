@@ -1,0 +1,43 @@
+<!--  This file is app/views/events/show.html.erb -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+<!DOCTYPE html>
+<body style="font-family: courier new">
+
+<html>
+  <head>
+    <title>Search Event</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='new.css'>    
+
+  </head>
+  <h2>Search Result</h2>
+  <% @search_result.each do |result|%>
+    <ul id="details">
+      <li>
+        Organizer:
+        <%= result.title %>
+      </li>
+      <li>
+        Location:
+      <%= result.location %>
+      </li>
+      <li>
+        Category:
+        <%= result.category %>
+      </li>
+      <li>
+        Start Time:
+        <%= result.start_time %>
+      </li>
+    </ul>
+  <br>
+  <% end%> 
+<html/>
