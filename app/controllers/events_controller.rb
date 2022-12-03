@@ -125,13 +125,13 @@ class EventsController < ApplicationController
     begin
       @event = Event.find params[:id]
       if @event.user_id != session[:user_id]
-        flash[:error] = "You must be logged in to access this section"
+        flash[:error] = "You are not the event organizer for this event."
         # stay in the same page
         redirect_to :back 
       end
     rescue Exception => e
       unless current_user
-        flash[:error] = "You must be logged in to access this section"
+        flash[:error] = "You must be logged in to the event organizer account to modify this event."
         # stay in the same page
         redirect_to :back 
       end
