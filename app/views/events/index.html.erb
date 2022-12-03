@@ -65,7 +65,14 @@
     </div>
     <div class="card-body">
       <%= link_to 'Register', '/register', :class => 'btn btn-info' %>
-      <%= link_to 'Sign in', '/sign_in', :class => 'btn btn-info' %>
+      
+      <%# display button based on sign-in status %>
+      <% if current_user %>
+        <%= link_to 'Switch account', '/sign_in', :class => 'btn btn-info' %>
+      <% else %>
+        <%= link_to 'Sign in', '/sign_in', :class => 'btn btn-info' %>
+      <% end %>
+
       <%= link_to 'Sign out', '/sign_out', :class => 'btn btn-info' %>
     </div>
   </div>
