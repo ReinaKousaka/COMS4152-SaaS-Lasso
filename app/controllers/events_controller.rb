@@ -81,19 +81,9 @@ class EventsController < ApplicationController
   end
 
   def search
-    # if params[:search].blank?
-    #   puts 'search param'
-    #   puts params[:search]
-    #   flash[:notice] = "Didn't find any event!"
-    #   redirect_to events_path
-    # else
-      puts 'search param'
-      puts params[:search_by]
       @search_param = params[:search_by].downcase
       @search_result = Event.all.where("lower(title) LIKE :search", search:"%#{@search_param}%")
-    # end
   end
-
 
 
   def categories_list
