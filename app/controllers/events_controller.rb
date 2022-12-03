@@ -116,7 +116,7 @@ class EventsController < ApplicationController
   def event_params
     params
       .require(:event)
-      .permit(:title, :category, :location, :organizer, :start_time, :end_time, :user_id, :description)
+      .permit(:title, :category, :location, :start_time, :end_time, :user_id, :description)
       # .reverse_merge(user_id: session[:user_id])
   end
 
