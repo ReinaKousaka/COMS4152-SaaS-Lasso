@@ -1,6 +1,10 @@
 <!--  This file is app/views/events/show.html.erb -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+<style>
+caption {caption-side: top;
+text-align: center;}
+</style>
 
 <% flash.each do |type, msg| %>
   <div class="alert alert-info">
@@ -11,6 +15,15 @@
 <!DOCTYPE html>
 <body style="font-family: courier new">
 
+<div class="navbar navbar-dark bg-dark shadow-sm">
+  <h2 style="color: white"> Search Result </h2>
+ <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <%= link_to 'Events Hub', events_path, :class => 'btn btn-secondary mr-sm-2' %>
+  </li>
+</ul>
+</div>
+
 <html>
   <head>
     <title>Search Event</title>
@@ -18,26 +31,48 @@
     <link rel='stylesheet' type='text/css' href='new.css'>    
 
   </head>
-  <h2>Search Result</h2>
-  <% @search_result.each do |result|%>
-    <ul id="details">
-      <li>
-        Organizer:
-        <%= result.title %>
-      </li>
-      <li>
-        Location:
-      <%= result.location %>
-      </li>
-      <li>
-        Category:
-        <%= result.category %>
-      </li>
-      <li>
-        Start Time:
-        <%= result.start_time %>
-      </li>
-    </ul>
-  <br>
-  <% end%> 
+
+
+<table class="table table-hover col-md-12" style="border:2px solid gray;margin-left:auto;margin-right:auto;" id="past_events">
+<caption> <em> <%= @search_result.size %> </em> Results for "  <em> <%= @search_param %> </em> " </caption>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Category</th>
+      <th>Organizer </th>
+      <th>Location</th>
+      <th>
+      <%= link_to 'Start Time',
+              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
+              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
+      </th>
+      <th>End Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @search_result.each do |event| %>
+      <tr>
+        <td>
+         <%= link_to "#{event.title}", event_path(event) %>
+        </td>
+        <td>
+          <%= event.category %>
+        </td>
+        <td>
+        <%= link_to "#{event.user.organizer_name}", user_path(event.user_id) %>
+        </td>
+        <td>
+        <%= event.location%>
+        </td>
+        <td>
+        <%= event.start_time %>
+        </td>
+        <td>
+        <%= event.end_time %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <html/>
