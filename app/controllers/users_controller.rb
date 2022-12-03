@@ -4,12 +4,16 @@ class UsersController < ApplicationController
   end
 
   def create
-
-    if user_params[:password] == "" or user_params[:email] == "" or user_params[:organizer_name] == ""
+    if user_params[:email] == "" or user_params[:organizer_name] == ""
       flash[:error] = "Account information fields cannot be empty."
       redirect_to :back
       return 
-    end 
+    end
+    if user_params[:password].length <= 5
+      flash[:error] = "Password is too short!"
+      redirect_to :back
+      return
+    end
 
     @user = User.new(user_params)
     if @user.save

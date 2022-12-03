@@ -1,60 +1,6 @@
 <!--  This file is app/views/events/index.html.erb -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body style="font-family: courier new">
-<style>
-      table,
-      td,
-      th {
-        padding: 10px;
-        border: 2px solid #1c87c9;
-        border-radius: 5px;
-        background-color: #e7e6eb;
-        text-align: center;
-      }
-      form {
-  text-align: center;
-}
-
-
-
-</style>
-
-<style>
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  font-family: courier new; 
-}
-.text-center {
-  text-align: center;
-}
-
-.button1 {background-color: #4CAF50;} /* Green */
-.button2 {background-color: #008CBA;} /* Blue */
-</style>
-
-<style>
-.container {
-  height: 100px;
-  position: relative;
-}
-
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-</style>
 
 <div class="navbar navbar-dark bg-dark shadow-sm ">
   <h2 style="color: white">Lasso! - Stay in the Loop.</h2>
@@ -75,41 +21,17 @@
       
         <% @all_categories.each do |category| %>
             <li class="list-group-item border-0 text-center">
-            <div class="form-check  form-check-inline align-items-center">
-            <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
-            <%= check_box_tag "categories[#{category}]", '1', (@categories_to_show_hash.include?(category)),
-              class: 'form-check-input' %>
-            </div>
+              <div class="form-check  form-check-inline align-items-center">
+                <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
+                <%= check_box_tag "categories[#{category}]", '1', (@categories_to_show_hash.include?(category)),
+                  class: 'form-check-input' %>
+              </div>
             </li>
         <% end %>
-        
         <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-info' %>
       <% end %>
     </div>
   </div>
-  <!--
-  <div class="card">
-    <div class="card_body justify-content-center">
-    <h3 style="text-align:center">Events Hub</h3>
-      <%= form_tag events_path, method: :get, id: 'categories_form' do %>
-        <%= hidden_field_tag 'sort_by', @sort_by %>
-        Include:
-      
-        <% @all_categories.each do |category| %>
-            <li class="list-group-item border-0 text-center">
-            <div class="form-check  form-check-inline align-items-center">
-            <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
-            <%= check_box_tag "categories[#{category}]", '1', (@categories_to_show_hash.include?(category)),
-              class: 'form-check-input' %>
-            </div>
-            </li>
-        <% end %>
-        
-        <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-info' %>
-      <% end %>
-    </div>
-  </div>
-  -->
 </div>
 
 <div class="col-10">
@@ -142,64 +64,15 @@
     </div>
     <div class="card-body">
       <%= link_to 'Register', '/register', :class => 'btn btn-info' %>
-      <%= link_to 'Sign in', '/sign_in', :class => 'btn btn-info' %>
+      
+      <%# display button based on sign-in status %>
+      <% if current_user %>
+        <%= link_to 'Switch account', '/sign_in', :class => 'btn btn-info' %>
+      <% else %>
+        <%= link_to 'Sign in', '/sign_in', :class => 'btn btn-info' %>
+      <% end %>
+
       <%= link_to 'Sign out', '/sign_out', :class => 'btn btn-info' %>
     </div>
   </div>
 </div>
-
-<!--
-<table class="table table-striped col-md-12" style="border:2px solid red;margin-left:auto;margin-right:auto;" id="events">
-  <thead>
-    <tr>
-      <th>Event</th>
-      <th>Category</th>
-      <th>
-        <%= link_to 'Organizer', events_path({sort_by: 'organizer', categories: @categories_to_show_hash}),
-                      id: 'organizer_header', class: ('bg-warning hilite' if @sort_by == 'organizer') %>
-      </th>
-      <th>Location</th>
-      <th>
-      <%= link_to 'Start Time',
-              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
-              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
-      </th>
-      <th>End Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td>
-         <%= link_to "#{event.title}", event_path(event) %>
-        </td>
-        <td>
-          <%= event.category %>
-        </td>
-        <td>
-          <%= event.organizer %>
-        </td>
-        <td>
-        <%= event.location%>
-        </td>
-        <td>
-        <%= event.start_time %>
-        </td>
-        <td>
-        <%= event.end_time %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<div class = "container">
-<div class="center">
-    <text> Have an event you want loop Columbia in about?</text> 
-    <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
-</div>
-</div>
--->
- </div>
- </div>

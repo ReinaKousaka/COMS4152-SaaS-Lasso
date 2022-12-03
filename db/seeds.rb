@@ -11,7 +11,6 @@ events = [
     {
         :title => 'Films on Furnald: The Lion King', 
         :category => "culture", 
-        :organizer => "Film Society",
         :user_id => 2,
         :location => "Furnald Lawn", 
         :start_time => DateTime.parse('30th October 20:00'),
@@ -21,7 +20,6 @@ events = [
     {
         :title => 'CS Coffee Chat', 
         :category => "academics", 
-        :organizer => "CS department",
         :user_id => 2,
         :location => " CS Lounge", 
         :start_time => DateTime.parse('1st November 14:00'),
@@ -31,7 +29,6 @@ events = [
     {
         :title => 'Undergraduate Holiday Bash', 
         :category => 'fun' , 
-        :organizer => "Undergraduate Student Life", 
         :user_id => 2,
         :location => "John Jay Lounge", 
         :start_time => DateTime.parse('2nd December 18:00'),
@@ -41,7 +38,6 @@ events = [
     {
         :title => 'Networking Roundtable in Finance', 
         :category => 'career', 
-        :organizer => 'CCE', 
         :user_id => 2,
         :location => 'Lerner Audiotorium', 
         :start_time => DateTime.parse('15th November 14:00'),
@@ -50,8 +46,7 @@ events = [
     },
     {
         :title => 'Varsity Football vs. UPenn', 
-        :category => 'athletics', 
-        :organizer => 'Varisty Football',
+        :category => 'athletics',
         :user_id => 2, 
         :location => 'Baker Stadium', 
         :start_time => DateTime.parse('13th November 15:00'),
@@ -64,12 +59,12 @@ users = [
     {
         :email => 'admin@lasso.com',
         :organizer_name => 'Admin',
-        :password_digest => BCrypt::Password.create('admin')
+        :password_digest => BCrypt::Password.create('admin123')
     }, 
     {
         :email => 'cs@lasso.com',
         :organizer_name => 'CS Department',
-        :password_digest => BCrypt::Password.create('admin')
+        :password_digest => BCrypt::Password.create('admin123')
     }
 ]
 
