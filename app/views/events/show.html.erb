@@ -33,7 +33,7 @@
   <ul id="details">
     <li>
       Organizer:
-      <%= link_to "#{@event.organizer}", user_path(@event.user_id) %>
+      <%= link_to "#{@event.user.organizer_name}", user_path(@event.user_id) %>
     </li>
     <li>
       Location:
