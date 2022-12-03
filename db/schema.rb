@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20221113233014) do
   create_table "events", force: :cascade do |t|
     t.string   "title",       null: false
     t.string   "category"
-    t.string   "organizer"
     t.string   "location"
     t.integer  "user_id",     null: false
     t.datetime "start_time"
