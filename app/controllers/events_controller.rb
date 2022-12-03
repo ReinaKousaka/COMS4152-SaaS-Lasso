@@ -131,7 +131,7 @@ class EventsController < ApplicationController
       end
     rescue Exception => e
       unless current_user
-        flash[:error] = "You must be logged in to the event organizer account to modify this event."
+        flash[:error] = "You must be logged in to an event organizer account."
         # stay in the same page
         redirect_to :back 
       end
