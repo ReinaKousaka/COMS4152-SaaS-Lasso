@@ -21,6 +21,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def show 
+    id = params[:id] #retrieve event ID from URI route 
+    @user = User.find params[:id] #look up event by unique ID
+    @events = Event.where(:user_id => id.to_i).order(:start_time)
+    @future_events = @events.where('start_time > ?', DateTime.now)
+
+    @past_events = Event.where(:user_id => id.to_i).where('start_time <= ?', DateTime.now).order(:title)
+
+  end 
+
   private
 
   def user_params

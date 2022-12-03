@@ -1,1 +1,111 @@
-<h1> Organizer Profile </h1>
+<!--  This file is app/views/users/show.html.erb -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+<!DOCTYPE html>
+<body style="font-family: courier new">
+<html>
+
+<style>
+caption {caption-side: top;
+text-align: center;}
+</style>
+
+<%# <p id='notice'><%= notice</p> %>
+
+<div class="navbar navbar-dark bg-dark shadow-sm">
+  <h2 style="color: white"> <em> <%= @user.organizer_name %> Home Page </em> </h2>
+ <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <%= link_to 'Events Hub', events_path, :class => 'btn btn-secondary mr-sm-2' %>
+  </li>
+</ul>
+</div>
+
+<br>
+
+Contact Email: <em> <%= @user.email %></em>
+
+<table class="table table-striped col-md-12" style="border:2px solid red;margin-left:auto;margin-right:auto;" id="upcoming_events">
+  <caption>Our Upcoming Events </caption>
+    <tr>
+      <th>Event</th>
+      <th>Category</th>
+      <th>Location</th>
+      <th>
+      <%= link_to 'Start Time',
+              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
+              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
+      </th>
+      <th>End Time</th>
+    </tr>
+  <tbody>
+    <% @future_events.each do |event| %>
+      <tr>
+        <td>
+         <%= link_to "#{event.title}", event_path(event) %>
+        </td>
+        <td>
+          <%= event.category %>
+        </td>
+        <td>
+        <%= event.location%>
+        </td>
+        <td>
+        <%= event.start_time %>
+        </td>
+        <td>
+        <%= event.end_time %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<table class="table table-striped col-md-12" style="border:2px solid red;margin-left:auto;margin-right:auto;" id="past_events">
+<caption>Our Past Events </caption>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Category</th>
+      <th>Location</th>
+      <th>
+      <%= link_to 'Start Time',
+              events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
+              id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
+      </th>
+      <th>End Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @past_events.each do |event| %>
+      <tr>
+        <td>
+         <%= link_to "#{event.title}", event_path(event) %>
+        </td>
+        <td>
+          <%= event.category %>
+        </td>
+        <td>
+        <%= event.location%>
+        </td>
+        <td>
+        <%= event.start_time %>
+        </td>
+        <td>
+        <%= event.end_time %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<html/>
