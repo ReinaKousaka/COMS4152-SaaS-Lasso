@@ -17,8 +17,11 @@
   </ul>
 </div>
 
-
-
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
 
 <div class="container mt-2">
 <div class="row">
