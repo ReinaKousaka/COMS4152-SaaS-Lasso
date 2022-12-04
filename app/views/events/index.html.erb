@@ -1,12 +1,17 @@
 <!--  This file is app/views/events/index.html.erb -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body style="font-family: courier new">
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 <div class="navbar navbar-dark bg-dark shadow-sm">
-  <h2 style="color: white">Lasso! - Stay in the Loop.</h2>
+  <h2 style="color: white"> Lasso! - Stay in the Loop <ion-icon name="infinite" size="medium" color="secondary" class='mt-sm-1'></ion-icon></h2>
   <ul class="nav justify-content-end">
+    <li class="nav-item mt-2">
+      <h5 style="color: white">Hi, <%=@username%></h5>
+    </li>
     <li class="nav-item">
-      <%= link_to 'Register', '/register', :class => 'btn btn-secondary mr-sm-2' %>
+      <%= link_to 'Register', '/register', :class => 'btn btn-secondary ml-sm-3 mr-sm-2' %>
     </li>
     <li class="nav-item">
       <a href="/sign_in" class='btn btn-secondary mr-sm-2' style="<%=@sign_in_display%>">Sign In</a>
@@ -23,72 +28,78 @@
   </div>
 <% end %>
 
-<div class="container mt-2">
-<div class="row">
-  <div class="col-2">
-    <div class="card">
+<div class="container-fluid mt-4 mb-2 ml-5">
+<div class="row mr-0">
+  <div class="col-1" style="max-width: 12rem; padding: 5px;">
+    <div class="card border-info mb-0 ml-0 mr-0">
       <div class="card-header">
-        <h3 style="text-align:center">Events Filter</h3>
+        <h5 class="text-center">Events Filter</h5>
       </div>
       <div class="card-body">
         <%= form_tag events_path, method: :get, id: 'categories_form' do %>
           <%= hidden_field_tag 'sort_by', @sort_by %>
-          Include:
-        
+
           <% @all_categories.each do |category| %>
-              <li class="list-group-item border-0 text-center">
-                <div class="form-check  form-check-inline align-items-center">
-                  <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
+                <div class="form-check form-check-inline align-items-center">
+                  <ion-icon name="rocket" size="small"></ion-icon>
+                  <%= label_tag "categories[#{category}]", category, class: 'form-check-label mr-sm-2 ml-sm-1' %>
                   <%= check_box_tag "categories[#{category}]", '1', (@categories_to_show_hash.include?(category)),
-                    class: 'form-check-input' %>
+                    class: 'form-check-input mr-sm-2' %>
                 </div>
-              </li>
             <% end %>
-            <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-info' %>
+            </br>
+            <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-info mr-sm-2 ml-sm-4' %>
           <% end %>
       </div>
     </div>
   </div>
 
-  <div class="col-10">
-    <div class="card">
-      <div class="card_body justify-content-center">
-        <%= month_calendar(events: @meetings) do |date, meetings| %>
-          <%= date %>
-            <% meetings.each do |meeting| %>
-            <div>
-              <%= link_to "#{meeting.title}", event_path(meeting.id)  %>
-            </div>
+  <div class="col-7" style="padding: 5px;">
+    <div class="row-8 mb-2">
+      <div class="card border-info mr-0 mb-0">
+        <div class="card_body justify-content-center mb-0">
+          <%= month_calendar(events: @meetings) do |date, meetings| %>
+            <%= date %>
+              <% meetings.each do |meeting| %>
+              <div>
+                <%= link_to "#{meeting.title}", event_path(meeting.id)  %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        Have an event you want loop Columbia in about?
-      </div>
-      <div class="card-body">
-        <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
-      </div>
-    </div>
-    <%# Search %>
-    <div class="card">
-      <div class="card-header">
-        Search an event you want to join!
-      </div>
-      <div class="card-body">
-
-        <%= form_tag search_path, method: :get, id: 'searchs_form' do %>
-            <!-- Search Input -->
-            <div class="form-inline my-2 my-lg-0">
-            <input type='search' id='search_by' name='search_by' placeholder="Search Title" class="form-control mr-sm-2" />
-            <button submit_tag 'Search', id = "search_submit", type="search", class="btn btn-info mr-sm-2">
-                    Search
-            </button>
-            </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
+  <div class="col-4" style="max-width: 24rem; padding: 5px;">
+        <%# Search %>
+        <div class="card border-info">
+          <div class="card-header">
+            <ion-icon name="search" size="medium"></ion-icon> <em>Search events you want to join!</em>
+          </div>
+          <div class="card-body">
+
+            <%= form_tag search_path, method: :get, id: 'searchs_form' do %>
+                <!-- Search Input -->
+                <div class="form-inline my-2 my-lg-0">
+                <input type='search' id='search_by' name='search_by' placeholder="Search Title" class="form-control mr-sm-2" />
+                <button submit_tag 'Search', id = "search_submit", type="search", class="btn btn-info mr-sm-2">
+                        Search
+                </button>
+                </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="card border-info mt-2">
+          <div class="card-header">
+            <ion-icon name="infinite" size="medium"></ion-icon> <em>Have an event you want loop in?</em>
+          </div>
+          <div class="card-body">
+            <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
+          </div>
+        </div>
+
+  </div>
+  
 </div>
 </div>
