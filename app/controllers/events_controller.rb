@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :require_login, only: [:update, :destroy, :create]
+  helper_method :is_event_belongs_to_user?, :show_edit_and_delete
 
   def show 
     id = params[:id] #retrieve event ID from URI route 
@@ -96,6 +97,14 @@ class EventsController < ApplicationController
   end
 
 
+  private
+  def event_params
+    params
+      .require(:event)
+      .permit(:title, :category, :location, :start_time, :end_time, :user_id, :description)
+      # .reverse_merge(user_id: session[:user_id])
+  end
+
   def categories_list
     params[:categories]&.keys || session[:categories] || Event.all_categories
   end
@@ -111,17 +120,8 @@ class EventsController < ApplicationController
   def search_by
     params[:search_by] || session[:search_by] || 'title'
   end
-  private
 
-  def event_params
-    params
-      .require(:event)
-      .permit(:title, :category, :location, :start_time, :end_time, :user_id, :description)
-      # .reverse_merge(user_id: session[:user_id])
-  end
-
-
-  def require_login()
+  def require_login
     begin
       @event = Event.find params[:id]
       if @event.user_id != session[:user_id]
@@ -137,4 +137,21 @@ class EventsController < ApplicationController
       end
     end
   end
+
+  def show_edit_and_delete(event)
+    if is_event_belongs_to_user?(event)
+      return '' 
+    else 
+      return 'display:none'
+    end 
+  end 
+
+  def is_event_belongs_to_user?(event)
+    if (current_user) and (session[:user_id] == event.user_id)
+      return true
+    else
+      return false
+    end
+  end
+
 end
