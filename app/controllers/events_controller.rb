@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :require_login, only: [:update, :destroy, :create]
-  helper_method :is_event_belongs_to_user?
+  helper_method :is_event_belongs_to_user?, :show_edit_and_delete
 
   def show 
     id = params[:id] #retrieve event ID from URI route 
@@ -131,6 +131,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def show_edit_and_delete(event)
+    if is_event_belongs_to_user?(event)
+      return '' 
+    else 
+      return 'display:none'
+    end 
+  end 
+
   def is_event_belongs_to_user?(event)
     if (current_user) and (session[:user_id] == event.user_id)
       return true
@@ -138,4 +146,5 @@ class EventsController < ApplicationController
       return false
     end
   end
+
 end

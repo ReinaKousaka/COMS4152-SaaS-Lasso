@@ -56,14 +56,14 @@
       <%= button_to 'Edit', 
         edit_event_path(@event),
         :method => :get,
-        :disabled => !is_event_belongs_to_user?(@event)
+        :style => show_edit_and_delete(@event)
       %>
       <%= button_to 'Delete', 
         event_path(@event),
         :method => :delete,
         'data-method' => 'delete', 
         'data-confirm' => 'Are you sure?', 
-        :disabled => !is_event_belongs_to_user?(@event)
+        :style => show_edit_and_delete(@event)
       %>
     </div>
     </div>
