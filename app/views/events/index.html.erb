@@ -31,7 +31,12 @@
 <div class="container-fluid mt-4 mb-2 ml-5">
 <div class="row mr-0">
   <div class="col-1" style="max-width: 12rem; padding: 5px;">
-    <div class="card border-info mb-0 ml-0 mr-0">
+   <div class="card border-none mb-0 ml-0 mr-0">
+        <div class="card-body m-0">
+          <img src="../assets/Doge-Meme.png" class="img-fluid img-thumbnail" alt="...">
+        </div>
+    </div>
+    <div class="card mb-0 ml-0 mr-0 border-none">
       <div class="card-header">
         <h5 class="text-center">Events Filter</h5>
       </div>
@@ -52,6 +57,7 @@
           <% end %>
       </div>
     </div>
+   
   </div>
 
   <div class="col-7" style="padding: 5px;">
@@ -96,6 +102,15 @@
           </div>
           <div class="card-body">
             <%= link_to 'Add new event!', new_event_path, :class => 'btn btn-info' %>
+          </div>
+        </div>
+
+        <div class="card border-info mt-2">
+          <div class="card-header">
+            <ion-icon name="infinite" size="medium"></ion-icon> <em>Upload Picture</em>
+          </div>
+          <div class="card-body">
+            <%= link_to 'Press here to upload!', upload_path , :class => 'btn btn-info' %>
           </div>
         </div>
 

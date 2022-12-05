@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     @event = Event.includes(:user).find params[:id]
   end
 
-  def index
+   def index
     @all_categories = Event.all_categories
     @events = Event.with_categories(categories_list, sort_by)
     @categories_to_show_hash = categories_hash
@@ -86,6 +86,13 @@ class EventsController < ApplicationController
   def search
       @search_param = params[:search_by].downcase
       @search_result = Event.all.where("lower(title) LIKE :search", search:"%#{@search_param}%")
+  end
+
+  def upload
+  end
+  
+
+  def files
   end
 
 
