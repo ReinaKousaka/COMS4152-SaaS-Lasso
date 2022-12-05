@@ -1,65 +1,71 @@
-<!--  This file is app/views/events/show.html.erb -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
-  </div>
-<% end %>
-
 <!DOCTYPE html>
-<body style="font-family: courier new">
 <html>
   <head>
-  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Show Event</title>
-  <head/>
+  </head>
 
-<%# <p id='notice'><%= notice</p> %>
+  <body style="font-family: courier new">
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <h2 style="color: white"> <em> Details about <%= @event.title%> </em> </h2>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <%= link_to 'Events Hub', events_path, :class => 'btn btn-secondary mr-sm-2' %>
+        </li>
+      </ul>
+    </div>
 
-<div class="navbar navbar-dark bg-dark shadow-sm">
-  <h2 style="color: white"> <em> Details about <%= @event.title%> </em> </h2>
- <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <%= link_to 'Events Hub', events_path, :class => 'btn btn-secondary mr-sm-2' %>
-  </li>
-</ul>
-</div>
+    <div>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+    </div>
 
-<div class="container mt-4">
+    <div class="container mt-4">
+      <ul id="details">
+        <li>
+          Organizer:
+          <%= link_to "#{@event.user.organizer_name}", user_path(@event.user_id) %>
+        </li>
+        <li>
+          Location:
+          <%= @event.location %>
+        </li>
+        <li>
+          Category:
+          <%= @event.category %>
+        </li>
+        <li>
+          Start Time:
+          <%= @event.start_time %>
+        </li>
+        <li>
+          End Time:
+          <%= @event.end_time %>
+        </li>
+        <li>
+          Description:
+          <%= @event.description %>
+        </li>
+      </ul>
+      <br/>
 
-  <ul id="details">
-    <li>
-      Organizer:
-      <%= link_to "#{@event.user.organizer_name}", user_path(@event.user_id) %>
-    </li>
-    <li>
-      Location:
-    <%= @event.location %>
-    </li>
-    <li>
-      Category:
-      <%= @event.category %>
-    </li>
-    <li>
-      Start Time:
-      <%= @event.start_time %>
-    </li>
-    <li>
-      End Time:
-      <%= @event.end_time %>
-      </li>
-    <li>
-      Description:
-      <%= @event.description %>
-      </li>
-  </ul>
-  <br>
-
-<div class="row">
-  <%= link_to 'Edit', edit_event_path(@event), :class => 'btn btn-primary col-2' %>
-  <%= link_to 'Delete', event_path(@event), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
-</div>
-</div>
-<html/>
+    <div class="row">
+      <%= button_to 'Edit', 
+        edit_event_path(@event),
+        :method => :get,
+        :disabled => !is_event_belongs_to_user?(@event)
+      %>
+      <%= button_to 'Delete', 
+        event_path(@event),
+        :method => :delete,
+        'data-method' => 'delete', 
+        'data-confirm' => 'Are you sure?', 
+        :disabled => !is_event_belongs_to_user?(@event)
+      %>
+    </div>
+    </div>
+  </body>
+</html>
