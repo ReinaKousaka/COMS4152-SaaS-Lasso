@@ -59,7 +59,7 @@
       <div class="card border-info mr-0 mb-0">
         <div class="card_body justify-content-center mb-0">
           <%= month_calendar(events: @meetings) do |date, meetings| %>
-            <%= date %>
+            <%= date.to_s[5..] %>
               <% meetings.each do |meeting| %>
               <div>
                 <%= link_to "#{meeting.title}", event_path(meeting.id)  %>
