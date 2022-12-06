@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body style="font-family: courier new">
+<html>
+  <head>
+    <title>Edit Organizer Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' href='edit.css'>    
+  </head>
+<div class="container mt-4">
+  <body>
+    <%# Flash Message %>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %>">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <h2>Edit Organizer Profile</h2>
+    <%= form_tag user_path(@user), :method => :put do %>
+        <%= label :user, :organizer_name, 'Name', :class => 'col-form-label' %>
+        <%= text_field :user, 'organizer_name', :class => 'form-control' %>
+        
+        <%= label :user, :email, 'Email', :class => 'col-form-label' %>
+        <%= text_field :user, 'email', :class => 'form-control' %>
+
+        <%= label :user, :description, 'Description', :class => 'col-form-label' %>
+        <%= text_field :user, 'description', :class => 'form-control' %>
+
+        </br>
+        <%= submit_tag 'Update Organizer Profile', :class => 'btn btn-primary' %>
+        <%= link_to 'Cancel', users_path, :class => 'btn btn-secondary' %>
+    <% end %>
+  </body>
+</div>
+</html>
