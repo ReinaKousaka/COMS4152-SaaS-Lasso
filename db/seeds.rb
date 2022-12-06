@@ -114,7 +114,7 @@ users = [
         :email => 'admin@lasso.com',
         :organizer_name => 'admin',
         :password_digest => BCrypt::Password.create('admin'),
-        :description => "HELLO!!!!!!"
+        :description => "We are the Lasso team and we want to connect the Columbia community through events!"
     }, 
     {
         :email => 'cs@lasso.com',
