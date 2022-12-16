@@ -64,13 +64,18 @@ class EventsController < ApplicationController
                         event_params["end_time(4i)"].to_i,
                         event_params["end_time(5i)"].to_i)
 
+    if params_copy[:title].length == 0
+      flash[:error] = "Event title can not be empty!"
+      redirect_to :back
+      return
+    end   
 
     if start_time > end_time
-         flash[:error] = "Event end time must be after event start time."
-         # stay in the same page
-         redirect_to :back
-         return 
-    end     
+      flash[:error] = "Event end time must be after event start time."
+      # stay in the same page
+      redirect_to :back
+      return
+    end
     
     @event = Event.create!(params_copy)
     flash[:notice] = "Event '#{@event.title}' was successfully created."

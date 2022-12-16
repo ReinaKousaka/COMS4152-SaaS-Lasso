@@ -1,58 +1,55 @@
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info" role="alert">
-    <%= msg %>
-  </div>
-<% end %>
-
-
 <!DOCTYPE html>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<body style="font-family: courier new">
 <html>
-  <head>
-    <title>New Event</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' href='new.css'>    
 
-  </head>
+<head>
+  <title>New Event</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-  <p id='notice'><%= notice %></p>
-
-<div class="container mt-4">
-  <h2>Create A New Event</h2>
-  <%= form_tag events_path, :class => 'form' do %>
-
-  <%= label :event, :title, 'Event Title', :class => 'col-form-label' %>
-  <br>
-
-  <%= text_field :event, :title, :class => 'form-control' %>
-  <br>
-  <label for="category"> Choose a category: </label>
-  <br/>
-  <%= select :event, :category, ['','academics','career','culture','athletics','fun'], {}, {class: 'form-control col-1'} %>
-  <br/>
-
-  <%= label :event, :location, 'Location', :class => 'col-form-label'  %>
-  <br>
-  <%= text_field :event, :location, :class => 'form-control' %>
-  <br/>
-  <%= label :event, :start_time, 'Start Time', :class => 'col-form-label'  %>
-    <br/>
-    <%= datetime_select :event, :start_time, {}, :class => 'form-control col-2 d-inline' %>
-
-    <br/>
-    <%= label :event, :end_time, 'End Time', :class => 'col-form-label'  %>
-    <br/>
-    <%= datetime_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
-
-    <br/>
-    <%= label :event, :description, 'Description', :class => 'col-form-label'  %>
-    <br/>
-    <%= text_field :event, :description, :class => 'form-control' %>
-    
-  <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
-  <br>
-  <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
+<body style="font-family: courier new">
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info" role="alert">
+      <%= msg %>
+    </div>
   <% end %>
-</div>
+
+  <div class="container mt-4">
+    <h2>Create A New Event</h2>
+    <%= form_tag events_path, :class => 'form' do %>
+      <%= label :event, :title, 'Event Title', :class => 'col-form-label' %>
+      <br>
+      <%= text_field :event, :title, :class => 'form-control' %>
+      <br>
+      <label for="category"> Choose a category: </label>
+      <br>
+      <%= select :event, :category, ['','academics','career','culture','athletics','fun'], {}, {class: 'form-control col-1'} %>
+      <br>
+
+      <%= label :event, :location, 'Location', :class => 'col-form-label'  %>
+      <br>
+      <%= text_field :event, :location, :class => 'form-control' %>
+      <br>
+      <%= label :event, :start_time, 'Start Time', :class => 'col-form-label'  %>
+      <br>
+      <%= datetime_select :event, :start_time, {}, :class => 'form-control col-2 d-inline' %>
+
+      <br>
+      <%= label :event, :end_time, 'End Time', :class => 'col-form-label'  %>
+      <br>
+      <%= datetime_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
+
+      <br>
+      <%= label :event, :description, 'Description', :class => 'col-form-label'  %>
+      <br>
+      <%= text_field :event, :description, :class => 'form-control' %>
+      
+      <br>
+      <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
+      <br>
+      <br>
+      <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</body>
 </html>
