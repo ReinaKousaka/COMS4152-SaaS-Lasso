@@ -9,8 +9,9 @@ RSpec.describe EventsController, type: :controller do
     end
 
     context 'Events page basic router methods' do
-        # set up HTTP_REFERER to an actual URL and then expect to be redirected back
+        # fixture
         before(:each) do
+            # set up HTTP_REFERER to an actual URL and then expect to be redirected back
             request.env['HTTP_REFERER'] = '/events'
         end
 
@@ -21,12 +22,21 @@ RSpec.describe EventsController, type: :controller do
             it 'Create a event successfully when logged in' do
                 events_count = Event.all.count
                 event = {
-                    :title => 'Varsity Football vs. UPenn', 
+                    :title => 'Varsity Football vs. UPenn',
                     :category => 'athletics', 
-                    :organizer => 'Varisty Football', 
                     :user_id => user1.id,
+                    "start_time(1i)" => "2022",
+                    "start_time(2i)" =>"12",
+                    "start_time(3i)" => "16",
+                    "start_time(4i)" => "03",
+                    "start_time(5i)" => "03",
+                    "end_time(1i)" => "2022",
+                    "end_time(2i)" =>"12",
+                    "end_time(3i)" => "16",
+                    "end_time(4i)" => "04",
+                    "end_time(5i)" => "03"
                 }
-                
+
                 login(user1.id)
                 post :create, event: event
 
@@ -38,16 +48,25 @@ RSpec.describe EventsController, type: :controller do
             it 'Failed to create a event when NOT logged in' do
                 original_events_count = Event.all.count
                 event = {
-                    :title => 'Varsity Football vs. UPenn', 
+                    :title => 'Varsity Football vs. UPenn',
                     :category => 'athletics', 
-                    :organizer => 'Varisty Football', 
                     :user_id => user1.id,
+                    "start_time(1i)" => "2022",
+                    "start_time(2i)" =>"12",
+                    "start_time(3i)" => "16",
+                    "start_time(4i)" => "03",
+                    "start_time(5i)" => "03",
+                    "end_time(1i)" => "2022",
+                    "end_time(2i)" =>"12",
+                    "end_time(3i)" => "16",
+                    "end_time(4i)" => "04",
+                    "end_time(5i)" => "03"
                 }
-                
+
                 logout()
                 get :create, event: event
 
-                expect(flash[:error]).to eq("You must be logged in to access this section")
+                expect(flash[:error]).to eq("You must be logged in to an event organizer account.")
                 expect(Event.all.count).to eq(original_events_count)
                 expect(response).to redirect_to('/events')
             end
@@ -67,17 +86,6 @@ RSpec.describe EventsController, type: :controller do
                 expect(response).to redirect_to events_path
                 expect(Event.all.count).to eq(original_events_count - 1)
                 expect(flash[:notice]).to eq ("Event '#{event1.title}' deleted.")
-            end
-
-            it 'Failed to delete an event when logged out' do
-                original_events_count = Event.all.count
-     
-                logout()
-                delete :destroy, id: event1.id
-
-                expect(flash[:error]).to eq("You must be logged in to access this section")
-                expect(Event.all.count).to eq(original_events_count)
-                expect(response).to redirect_to('/events')
             end
         end
 
@@ -109,18 +117,6 @@ RSpec.describe EventsController, type: :controller do
                 expect(event1.category).to eql('culture')
                 expect(response).to redirect_to(events_path)
             end
-
-            it 'Failed to update an movie when logged out' do
-                original_event_category = event1.category
-
-                logout()
-                put :update, id: event1.id, event: FactoryGirl.attributes_for(:event, category: 'academic')
-                event1.reload
-                
-                expect(flash[:error]).to eq("You must be logged in to access this section")
-                expect(event1.category).to eql(original_event_category)
-                expect(response).to redirect_to('/events')
-            end
         end
 
         describe 'GET #show' do
@@ -144,8 +140,7 @@ RSpec.describe EventsController, type: :controller do
                 Event.delete_all
                 Event.create({
                     :title => 'Films on Furnald: The Lion King', 
-                    :category => "culture", 
-                    :organizer => "Film Society", 
+                    :category => "culture",
                     :user_id => 1,
                     :location => "Furnald Lawn", 
                     :start_time => DateTime.parse('30th November 20:00:00'),
@@ -153,8 +148,7 @@ RSpec.describe EventsController, type: :controller do
                 })
                 Event.create({
                     :title => 'CS Coffee Chat',
-                    :category => "academics", 
-                    :organizer => "CS department", 
+                    :category => "academics",
                     :user_id => 1,
                     :location => " CS Lounge", 
                     :start_time => DateTime.parse('1st November 14:00:00'),
@@ -162,8 +156,7 @@ RSpec.describe EventsController, type: :controller do
                 })
                 Event.create({
                     :title => 'Varsity Football vs. UPenn', 
-                    :category => 'athletics', 
-                    :organizer => 'Varisty Football', 
+                    :category => 'athletics',
                     :user_id => user1.id,
                     :start_time => DateTime.parse('15th November 14:00:00'),
                     :end_time => DateTime.parse('15th November 15:00:00')
