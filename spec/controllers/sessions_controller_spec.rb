@@ -13,8 +13,8 @@ RSpec.describe SessionsController, type: :controller do
             User.delete_all
             User.create({
                :email => "account1@lasso.app", 
-               :username => "account1", 
-               :password => "123"
+               :organizer_name => "account1", 
+               :password => "123456"
             }) 
             @user = User.find_by(email: "account1@lasso.app")
         end 
@@ -23,8 +23,8 @@ RSpec.describe SessionsController, type: :controller do
             it "should correctly log in" do 
                 user_params = { 
                     :email => "account1@lasso.app", 
-                    :username => "account1", 
-                    :password => "123"
+                    :organizer_name => "account1", 
+                    :password => "123456"
                 }
                 
                 get :create, user: user_params
@@ -38,13 +38,13 @@ RSpec.describe SessionsController, type: :controller do
             it "should not log in" do 
                 user_params = { 
                     :email => "account1@lasso.app", 
-                    :username => "account1", 
+                    :organizer_name => "account1", 
                     :password => "1234"
                 }
                 
                 get :create, user: user_params
 
-                expect(flash[:notice]).to eq("Incorrect Password!")
+                expect(flash[:danger]).to eq("Incorrect Password!")
                 expect(response).to have_http_status(200)  
                 expect(response).to render_template('new')
             end 
@@ -54,13 +54,13 @@ RSpec.describe SessionsController, type: :controller do
             it "should not log in" do 
                 user_params = { 
                     :email => "account1a@lasso.app", 
-                    :username => "account1", 
+                    :organizer_name => "account1", 
                     :password => "1234"
                 }
                 
                 get :create, user: user_params
 
-                expect(flash[:notice]).to eq("The Account Does Not Exist!")
+                expect(flash[:warning]).to eq("The Account Does Not Exist!")
                 expect(response).to have_http_status(200)  
                 expect(response).to render_template('new')
             end 
