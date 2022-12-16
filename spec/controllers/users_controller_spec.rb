@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
         it 'create new user successfully' do
             user = {
                 :email => 'user1@columbia.edu',
-                :username => 'user1',
+                :organizer_name => 'organizer1',
                 :password => 'password'
             }
 
@@ -28,7 +28,7 @@ RSpec.describe UsersController, type: :controller do
 
             user = {
                 :email => 'user1@columbia.edu',
-                :username => 'user1',
+                :organizer_name => 'organizer1',
                 :password => 'password'
             }
 
@@ -37,7 +37,7 @@ RSpec.describe UsersController, type: :controller do
 
             post :create, user: {
                 :email => 'user1@columbia.edu',
-                :username => 'user2',
+                :organizer_name => 'organizer2',
                 :password => 'password2'
             }
             expect(User.all.count).to eq(1)
