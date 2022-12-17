@@ -5,12 +5,12 @@ class UsersController < ApplicationController
 
   def create
     if user_params[:email] == "" or user_params[:organizer_name] == ""
-      flash[:error] = "Account information fields cannot be empty."
+      flash[:danger] = "Account information fields cannot be empty."
       redirect_to :back
       return 
     end
     if user_params[:password].length <= 5
-      flash[:error] = "Password is too short!"
+      flash[:danger] = "Password is too short!"
       redirect_to :back
       return
     end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash[:notice] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     @user.update_attributes!(user_params)
-    flash[:notice] = "User Profile '#{@user.organizer_name}' was successfully updated."
+    flash[:info] = "User Profile '#{@user.organizer_name}' was successfully updated."
     redirect_to events_path #"/users/", id: params[:id]
   end
 
