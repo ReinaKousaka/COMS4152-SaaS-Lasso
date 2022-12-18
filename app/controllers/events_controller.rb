@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find params[:id]
     @event.update_attributes!(event_params)
-    flash[:notice] = "Event '#{@event.title}' was successfully updated."
+    flash[:info] = "Event '#{@event.title}' was successfully updated."
     redirect_to events_path
   end
 
@@ -78,14 +78,14 @@ class EventsController < ApplicationController
     end
     
     @event = Event.create!(params_copy)
-    flash[:notice] = "Event '#{@event.title}' was successfully created."
+    flash[:info] = "Event '#{@event.title}' was successfully created."
     redirect_to events_path
   end 
 
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    flash[:notice] = "Event '#{@event.title}' deleted."
+    flash[:info] = "Event '#{@event.title}' deleted."
     redirect_to events_path
   end
 

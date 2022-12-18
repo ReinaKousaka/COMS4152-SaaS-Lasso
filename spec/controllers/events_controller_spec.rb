@@ -40,7 +40,7 @@ RSpec.describe EventsController, type: :controller do
                 login(user1.id)
                 post :create, event: event
 
-                expect(flash[:notice]).to eq("Event '#{event[:title]}' was successfully created.")
+                expect(flash[:info]).to eq("Event '#{event[:title]}' was successfully created.")
                 expect(response).to redirect_to(events_path)
                 expect(Event.all.count).to eq(events_count + 1)
             end
@@ -85,7 +85,7 @@ RSpec.describe EventsController, type: :controller do
                 expect(Event.find_by_title(event1.title)). to eq(nil)
                 expect(response).to redirect_to events_path
                 expect(Event.all.count).to eq(original_events_count - 1)
-                expect(flash[:notice]).to eq ("Event '#{event1.title}' deleted.")
+                expect(flash[:info]).to eq ("Event '#{event1.title}' deleted.")
             end
         end
 
@@ -113,7 +113,7 @@ RSpec.describe EventsController, type: :controller do
                 put :update, id: event1.id, event: FactoryGirl.attributes_for(:event, category: 'culture')
                 event1.reload
                 
-                expect(flash[:notice]).to eq("Event '#{event1.title}' was successfully updated.")
+                expect(flash[:info]).to eq("Event '#{event1.title}' was successfully updated.")
                 expect(event1.category).to eql('culture')
                 expect(response).to redirect_to(events_path)
             end
