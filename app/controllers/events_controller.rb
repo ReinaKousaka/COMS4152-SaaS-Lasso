@@ -65,13 +65,13 @@ class EventsController < ApplicationController
                         event_params["end_time(5i)"].to_i)
 
     if params_copy[:title].length == 0
-      flash[:error] = "Event title can not be empty!"
+      flash[:warning] = "Event title can not be empty!"
       redirect_to :back
       return
     end   
 
     if start_time > end_time
-      flash[:error] = "Event end time must be after event start time."
+      flash[:warning] = "Event end time must be after event start time."
       # stay in the same page
       redirect_to :back
       return
@@ -123,13 +123,13 @@ class EventsController < ApplicationController
     begin
       @event = Event.find params[:id]
       if @event.user_id != session[:user_id]
-        flash[:error] = "You are not the event organizer for this event."
+        flash[:warning] = "You are not the event organizer for this event."
         # stay in the same page
         redirect_to :back 
       end
     rescue Exception => e
       unless current_user
-        flash[:error] = "You must be logged in to an event organizer account."
+        flash[:warning] = "You must be logged in to an event organizer account."
         # stay in the same page
         redirect_to :back 
       end
