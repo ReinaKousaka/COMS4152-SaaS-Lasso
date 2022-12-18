@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<body style="font-family: courier new">
 <html>
-  <head>
-    <title>Edit Event</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel='stylesheet' type='text/css' href='edit.css'>    
-  </head>
-<div class="container mt-4">
-  <body>
+<head>
+  <title>Edit Event</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container mt-4">
     <%# Flash Message %>
     <% flash.each do |type, msg| %>
       <div class="alert alert-<%= type %>">
@@ -18,30 +16,32 @@
 
     <h2>Edit Existing Event</h2>
     <%= form_tag event_path(@event), :method => :put do %>
-        <%= label :event, :title, 'Title', :class => 'col-form-label' %>
-        <%= text_field :event, 'title', :class => 'form-control' %>
+      <%= label :event, :title, 'Title', :class => 'col-form-label' %>
+      <%= text_field :event, 'title', :class => 'form-control' %>
 
-        <%= label :event, :category, 'Category', :class => 'col-form-label'  %>
-        <br/>
-        <%= select :event, :category, ["athletics", "academics", "career", "culture", "fun"], {}, {:class => 'form-control col-1'} %>
-        <br/>
-        
-        <%= label :event, :location, 'Location', :class => 'col-form-label' %>
-        <%= text_field :event, 'location', :class => 'form-control' %>
+      <%= label :event, :category, 'Category', :class => 'col-form-label'  %>
+      <br>
+      <%= select :event, :category, ["athletics", "academics", "career", "culture", "fun"], {}, {:class => 'form-control col-1'} %>
+      <br>
+      
+      <%= label :event, :location, 'Location', :class => 'col-form-label' %>
+      <%= text_field :event, 'location', :class => 'form-control' %>
 
-        
-        <%= label :event, :start_time, 'Start Time', :class => 'col-form-label'  %>
-        <br/>
-        <%= datetime_select :event, :start_time, {}, :class => 'form-control col-2 d-inline' %>
+      
+      <%= label :event, :start_time, 'Start Time', :class => 'col-form-label'  %>
+      <br>
+      <%= datetime_select :event, :start_time, {}, :class => 'form-control col-2 d-inline' %>
 
-        <br/>
-        <%= label :event, :end_time, 'End Time', :class => 'col-form-label'  %>
-        <br/>
-        <%= datetime_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
-        <br/>
-        <%= submit_tag 'Update event Info', :class => 'btn btn-primary' %>
-        <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
+      <br>
+      <%= label :event, :end_time, 'End Time', :class => 'col-form-label'  %>
+      <br>
+      <%= datetime_select :event, :end_time, {}, :class => 'form-control col-2 d-inline' %>
+      <br>
+      <br>
+      <%= submit_tag 'Update event Info', :class => 'btn btn-primary' %>
+      &nbsp
+      <%= link_to 'Cancel', events_path, :class => 'btn btn-secondary' %>
     <% end %>
-  </body>
-</div>
+  </div>
+</body>
 </html>
