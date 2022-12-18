@@ -88,17 +88,56 @@ RSpec.describe UsersController, type: :controller do
         let!(:event2) { FactoryGirl.create(:event) }
         let!(:user1) { FactoryGirl.create(:user) }
         let!(:user2) { FactoryGirl.create(:user) }
-
-        it 'should display events belong to the user' do
+        
+        it 'should display Edit Profile button properly based on users' do
+            login(user1.id)
             get :show, id: user1.id
-            expect(response).to have_http_status(:success)
-            # TODO: check event1 and event2 are displayed here
+            expect(assigns(:show_edit_profile)).to eq("")
+
+            login(user2.id)
+            get :show, id: user1.id
+            expect(assigns(:show_edit_profile)).to eq("display:none")
         end
 
-        it 'should not display other events' do
-            get :show, id: user2.id
-            expect(response).to have_http_status(:success)
-            # TODO: check no events is displayed here
+        # TODO: may consider check event1 and event2 are displayed here
+        # it 'should display events belong to the user' do
+        #     get :show, id: user1.id
+        # end
+
+        # it 'should not display other events' do
+        #     get :show, id: user2.id
+        # end
+    end
+
+    describe 'GET users#edit' do
+        let!(:user) { FactoryGirl.create(:user) }
+        before do
+            get :edit, id: user.id
+        end
+    
+        it 'should find the user' do
+            expect(assigns(:user)).to eql(user)
+        end
+    
+        it 'should render the edit template' do
+            expect(response).to render_template('edit')
+        end
+    end
+
+    describe 'PUT users#update' do
+        let!(:user) { FactoryGirl.create(:user) }
+
+        it 'Updates an existing user' do
+            login(user.id)
+            # put :update, id: event1.id, event: FactoryGirl.attributes_for(:event, category: 'culture')
+            put :update, 
+                id: user.id, 
+                user: FactoryGirl.attributes_for(:user, description: 'new description')
+            user.reload
+            
+            expect(flash[:info]).to eq("User Profile '#{user.organizer_name}' was successfully updated.")
+            expect(user.description).to eql('new description')
+            expect(response).to redirect_to(events_path)
         end
     end
 end
