@@ -8,11 +8,11 @@ Background: events have been added to database
 
   Given the following events exist:
   | title                 | category  | location  | user_id | start_time | end_time |
-  | Films on Furnald: The Lion King | culture | Furnald Lawn  | 1| 2nd November 20:00:00 | 2nd November 20:00:00 |
-  | CS Coffee Chat | fun | Mudd | 1 | 1st November 14:00:00 | 1st November 14:00:00 |
-  | Undergraduate Holiday Bash | fun | John Jay Lounge | 1 | 2nd December 18:00:00 | 2nd December 18:00:00 |
-  | Networking Roundtable in Finance | career | Lerner Audiotorium | 1 | 15th November 14:00:00 | 15th November 14:00:00 |
-  | Varsity Football vs. UPenn | athletics | Baker Stadium | 1 | 13th November 15:00:00 |  13th November 15:00:00 |
+  | Films on Furnald: The Lion King | culture | Furnald Lawn  | 1| 2nd December 20:00:00 | 2nd December 20:00:00 |
+  | CS Coffee Chat | fun | Mudd | 1 | 1st December 14:00:00 | 1st December 14:00:00 |
+  | Undergraduate Holiday Bash | fun | John Jay Lounge | 1 | 6nd December 18:00:00 | 6nd December 18:00:00 |
+  | Networking Roundtable in Finance | career | Lerner Audiotorium | 1 | 15th December 14:00:00 | 15th December 14:00:00 |
+  | Varsity Football vs. UPenn | athletics | Baker Stadium | 1 | 13th December 15:00:00 |  13th December 15:00:00 |
 
 
   And I am on the Lasso home page
@@ -26,79 +26,47 @@ Background: events have been added to database
   Given I am on the Lasso home page
   When I follow "Register"
   And I fill in "email" with "tatum@lasso.com"
-  And I fill in "username" with "Tatum"
-  And I fill in "password" with "admin"
-  And I press "register"
+  And I fill in "organizer_name" with "Tatum"
+  And I fill in "password" with "admin123123"
+  And I press "Sign up"
   Then I should be on the Lasso home page
   And I should see "Hi, Tatum"
-
   Then 2 seed users should exist
-
-
-
-Scenario: Sign into an Account
-  Given I am on the Lasso home page
-  Then I follow "Sign in"
-  And I fill in "email" with "tatum@lasso.com"
-  And I fill in "password" with "admin"
-  And I press "Sign In"
-  Then I should be on the Lasso home page
-  And I should see "Hi, Tatum"
-
 
 Scenario: Sign Out
   Given I am on the Lasso home page
-  When I follow "Sign out"
+  When I follow "Sign Out"
   Then I should be on the Lasso home page
-  And I should see "You are not signed in!"
-
-Scenario: Sign into Seed Account
-  Given I am on the Lasso home page
-  Then I follow "Sign in"
-  And I fill in "email" with "admin@lasso.com"
-  And I fill in "password" with "123"
+  And I should see "Hi, you need to sign in!"
+  Then I follow "Sign In"
+  And I fill in "email" with "tatum@lasso.com"
+  And I fill in "password" with "admin123123"
   And I press "Sign In"
   Then I should be on the Lasso home page
-  And I should see "Hi, Admin"
+  And I should see "Hi, Tatum"
 
 
 Scenario: Add an event
   Given I am on the Lasso home page
   Then I follow "Add new event"
   Then I should be on the Create New Event page
-  When I fill in "Title" with "Halloween Party"
+  When I fill in "Title" with "Year End Party"
   And I select "fun" from "event_category"
   And  I fill in "Location" with "Butler Lower Plaza"
-  And  I fill in "Organizer" with "Social Club"
-  And  I select datetime "2022 October 31 - 19:00" as the "event_start_time"
-  And  I select datetime "2022 October 31 - 22:00" as the "event_end_time"
+  And  I select datetime "2022 December 31 - 19:00" as the "event_start_time"
+  And  I select datetime "2022 December 31 - 22:00" as the "event_end_time"
   And I press "Save Changes"
   Then I should be on the Lasso home page
-  And I should see "Halloween Party"
-
-Scenario: change name for existing event
-  Given I am on the Lasso home page
-  When I follow "CS Coffee Chat"
-  And I follow "Edit"
-  And  I fill in "Title" with "Coffee Chat"
-  And  I press "Update event Info"
-  And I follow "Cancel" 
-  Then I should be on the Lasso home page
-  And I should see "Coffee Chat"
-
-Scenario: change category for existing event
-  Given I am on the Lasso home page
-  When I follow "Networking Roundtable in Finance"
-  And I follow "Edit"
-  And I select "fun" from "Category"
-  And  I press "Update event Info"
-  And I should see "fun"
+  And I should see "Year End Party"
+  When I go to the details page for "Year End Party"
+  When I press "Delete"
+  And I should not see the following events: "Year End Party"
 
 Scenario: Select a catergory
   Given I am on the Lasso home page
   Then I follow "Add new event"
   Then I should be on the Create New Event page
-  When I fill in "Title" with "Halloween Party"
+  When I fill in "Title" with "2022 Year End Party"
   And I select "fun" from "event_category"
   Then I should see "fun"
 
@@ -115,14 +83,3 @@ Scenario: all categories selected
   Then I should see all the categories
 
 
-Scenario: delete existing event 
-  Given I am on the Lasso home page
-  Then I follow "Sign in"
-  And I fill in "email" with "admin@lasso.com"
-  And I fill in "password" with "123"
-  And I press "Sign In"
-  Then I should be on the Lasso home page
-  And I should see "Hi, Admin"
-  When I go to the details page for "CS Coffee Chat"
-  When I follow "Delete"
-  Then I should see "CS Coffee Chat" has been deleted

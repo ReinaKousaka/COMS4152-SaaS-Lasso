@@ -2,11 +2,12 @@ require 'bcrypt'
 class SessionsController < ApplicationController
   def new
     @user = User.new
+    session[:user_id] = @user.id
   end
 
   def create
       @user = User.find_by(email: user_params[:email])
-      flash.clear
+      # flash.clear
       if @user
         puts @user.password
         # if user_params[:password] == BCrypt::Password.new(@user.password)

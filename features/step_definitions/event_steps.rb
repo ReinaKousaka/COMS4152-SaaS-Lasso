@@ -90,3 +90,9 @@ Then /I should see "(.*)" error messages/ do |field|
 end
 
 
+Then /^the number of search results of "(.*)" should be (.*)/ do |keyword, num|
+  @search_param = keyword.downcase
+  @search_result = Event.all.where("lower(title) LIKE :search", search:"%#{@search_param}%")
+  expect(@search_result.size).to eq num.to_i
+end
+

@@ -1,4 +1,4 @@
-Feature: kogin as Users
+Feature: login as Users
 
   As an event organizer
   I want to login to create the events
@@ -63,6 +63,14 @@ Background: events have been added to database
     When I follow "Sign Out"
     Then I should be on the Lasso home page
     And I should see "Hi, you need to sign in!"
+    When I follow "Sign In"
+    Then I should be on the Sign In page
+    When I fill in "email" with "haha@columbia.edu"
+    And I fill in "password" with "hahahahahha"
+    And I press "Sign In"
+    Then I should be on the Lasso home page
+    And I should see "Hi, hahaha"
+
 
 
  Scenario: Go to register page
@@ -89,7 +97,9 @@ Background: events have been added to database
     And  I select "fun" from "Category"
     And  I press "Update event Info"
     Then the category of "Christmas Holiday" should be "fun"
-
+    When I go to the details page for "Christmas Holiday"
+    When I press "Delete"
+    And I should not see the following events: "Christmas Holiday"
 
   Scenario: Edit an event without access
     When I go to the edit page for "CS Coffee Chat"
@@ -97,36 +107,17 @@ Background: events have been added to database
     And  I press "Update event Info"
     Then I should see "You are not the event organizer for this event."
     And I should not see the following events: "Coffee Chat"
-
-  Scenario: Delete an event with access
-    When I go to the details page for "Christmas Holiday"
-    When I follow "Delete"
-    And I should not see the following events: "Christmas Holiday"
-
-  Scenario: Sign In
+  
+  Scenario: Search for event
     Given I am on the Lasso home page
-    When I follow "Sign In"
-    Then I should be on the Sign In page
-    When I fill in "email" with "admin@lasso.com"
-    And I fill in "password" with "admin"
-    And I press "Sign In"
-    Then I should be on the Lasso home page
-    And I should see "Hi, yunyun"
-    Then 2 seed users should exist
-    When I follow "Add new event"
-    Then I should be on the Create New Event page
-    When I fill in "Title" with "Thanksgiving Holiday"
-    And I select "academics" from "event_category"
-    And  I fill in "Location" with "Butler Lower Plaza"
-    And  I fill in "Organizer" with "Social Club"
-    And  I select datetime "2022 November 24 - 19:00" as the "event_start_time"
-    And  I select datetime "2022 November 24 - 22:00" as the "event_end_time"
-    And I press "Save Changes"
-    And I should see "Thanksgiving Holiday"
-    When I go to the edit page for "Thanksgiving Holiday"
-    And  I select "fun" from "Category"
-    And  I press "Update event Info"
-    Then the category of "Thanksgiving Holiday" should be "fun"
+    And  I fill in "search_by" with "Coffee"
+    And I press "Search"
+    Then the number of search results of "Coffee" should be 1
+
+
+
+
+
 
 
 
