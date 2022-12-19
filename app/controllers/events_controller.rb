@@ -20,8 +20,8 @@ class EventsController < ApplicationController
 
     start_date = params.fetch(:start_date, Date.today).to_date
     @meetings = @events.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-    if session[:user_id]
-      @organizer = User.find(session[:user_id])
+    if current_user
+      @organizer = current_user
       @username = @organizer.organizer_name
       @sign_in_display = 'display:none'
       @sign_out_display = ''
