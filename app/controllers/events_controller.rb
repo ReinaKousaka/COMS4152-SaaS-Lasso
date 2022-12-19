@@ -152,17 +152,4 @@ class EventsController < ApplicationController
       return false
     end
   end
-
-    
-  def local_file_with_custom_params
-    file = file_params[:file]
-    file.original_filename = file_params[:filename] if file_params[:filename].present?
-    file.content_type = file_params[:mime_type] if file_params[:mime_type].present?
-    file
-  end
-
-  def file_params
-    params.require(:file).permit(:file, :mime_type, :filename, :store, :url)
-  end
-
 end
