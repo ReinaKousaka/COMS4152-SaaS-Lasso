@@ -29,6 +29,7 @@
 
   <div class="container mt-2">
     <div class="row">
+
       <div class="col-3"> 
         <div class="card">
           <div class="card-header">
@@ -37,12 +38,26 @@
           <div class="card-body">
             <em> <%= @user.email %></em>
           </div>
-      </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 style="text-align:center">About Us</h4>
+          </div>
+          <div class="card-body">
+          <em> <%= @user.description %> </em>
+        </div>
+          <div class="card-body">
+            <%= button_to 'Edit Profile', 
+            edit_user_path(@user),
+            :method => :get, 
+            :style => @show_edit_profile
+            %>
+          </div>
+        </div>
+
 
     <div class="card">
-      <div class="card-header">
-        <h4 style="text-align:center">Logo</h4>
-      </div>
       <div class="card-body">
         <%# <img src="../assets/Columbia-University-logo.gif" class="img-fluid img-thumbnail" alt="..."> %>
         <%= image_tag(
@@ -51,6 +66,7 @@
           :alt => '...'
         )%>
       </div>
+
     </div>
   </div>
 
@@ -67,11 +83,7 @@
               <th>Event</th>
               <th>Category</th>
               <th>Location</th>
-              <th>
-                <%= link_to 'Start Time',
-                  events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
-                  id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
-              </th>
+              <th>Start Time</th>
               <th>End Time</th>
             </tr>
             <tbody>
@@ -112,11 +124,7 @@
                 <th>Event</th>
                 <th>Category</th>
                 <th>Location</th>
-                <th>
-                <%= link_to 'Start Time',
-                  events_path({sort_by: 'start_time', categories: @categories_to_show_hash}),
-                  id: 'start_timeheader', class: ('bg-warning hilite' if @sort_by == 'start_time') %>
-                </th>
+                <th>Start Time</th>
                 <th>End Time</th>
               </tr>
             </thead>
@@ -146,5 +154,6 @@
       </div>
     </div>
   </div>
+
 </body>
 </html>

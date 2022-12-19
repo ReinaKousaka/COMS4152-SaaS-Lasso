@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/upload', to: 'events#upload'
   
   get '/register', to: 'users#new'
-  resources :users, only: [:create, :show]
+  resources :users, only: [:create, :show, :edit, :update]
 
   get '/sign_in', to: 'sessions#new'
   get '/sign_out', to: 'sessions#destroy'
