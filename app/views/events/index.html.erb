@@ -15,7 +15,7 @@
         <h5 style="color: white">
           <% if current_user %>
             <span>Hi,</span>
-            <%= link_to @username, user_path(current_user) %>
+            <%= link_to current_user.organizer_name, user_path(current_user) %>
           <% else %>
             <span>Hi, you need to sign in!</span>
           <% end %>

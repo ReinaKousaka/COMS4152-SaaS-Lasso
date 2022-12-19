@@ -22,11 +22,9 @@ class EventsController < ApplicationController
     @meetings = @events.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
     if current_user
       @organizer = current_user
-      @username = @organizer.organizer_name
       @sign_in_display = 'display:none'
       @sign_out_display = ''
     else 
-      @username = 'you need to sign in!'
       @sign_in_display = ''
       @sign_out_display = 'display:none'
     end

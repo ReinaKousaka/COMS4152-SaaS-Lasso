@@ -239,7 +239,6 @@ RSpec.describe EventsController, type: :controller do
                 get :index
 
                 expect(assigns(:organizer)).to eql(user1)
-                expect(assigns(:username)).to eq(user1.organizer_name)
                 expect(assigns(:sign_in_display)).to eq('display:none')
                 expect(assigns(:sign_out_display)).to eq('')
             end
@@ -247,7 +246,6 @@ RSpec.describe EventsController, type: :controller do
             it 'should display not signed in features' do
                 get :index
 
-                expect(assigns(:username)).to eq('you need to sign in!')
                 expect(assigns(:sign_in_display)).to eq('')
                 expect(assigns(:sign_out_display)).to eq('display:none')
             end
