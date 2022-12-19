@@ -28,15 +28,6 @@
 
 
 <div class="container-fluid mt-4 mb-2 ml-5">
-<div class="row mr-0">
-  <div class="col-1" style="max-width: 12rem; padding: 5px;">
-    <div class="card mb-0 ml-0 mr-0 border-none">
-      <div class="card-header">
-        <h5 class="text-center">Events Filter</h5>
-      </div>
-      <div class="card-body">
-        <%= form_tag events_path, method: :get, id: 'categories_form' do %>
-          <%= hidden_field_tag 'sort_by', @sort_by %>
 
 
   <% flash.each do |type, msg| %>

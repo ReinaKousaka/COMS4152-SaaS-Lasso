@@ -43,7 +43,7 @@ Background: events have been added to database
     When I follow "Register"
     Then I should be on the Register page
     When I fill in "email" with "haha@columbia.edu"
-    And I fill in "organizer name" with "hahaha"
+    And I fill in "organizer_name" with "hahaha"
     And I fill in "password" with "haha"
     And I press "Sign up"
     And I should see "password" error messages
@@ -53,7 +53,7 @@ Background: events have been added to database
     When I follow "Register"
     Then I should be on the Register page
     When I fill in "email" with "haha@columbia.edu"
-    And I fill in "organizer name" with "hahaha"
+    And I fill in "organizer_name" with "hahaha"
     And I fill in "password" with "hahahahahha"
     And I press "Sign up"
     Then I should be on the Lasso home page
@@ -78,7 +78,7 @@ Background: events have been added to database
     When I follow "Register"
     Then I should be on the Register page
     When I fill in "email" with "yt2781@columbia.edu"
-    And I fill in "organizer name" with "yunyun"
+    And I fill in "organizer_name" with "yunyun"
     And I fill in "password" with "admin123"
     And I press "Sign up"
     Then I should be on the Lasso home page
