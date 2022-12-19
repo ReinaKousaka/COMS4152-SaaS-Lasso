@@ -56,14 +56,17 @@
       <%= button_to 'Edit', 
         edit_event_path(@event),
         :method => :get,
-        :style => show_edit_and_delete(@event)
+        :style => show_edit_and_delete(@event),
+        :class => 'btn btn-primary'
       %>
+      &nbsp
       <%= button_to 'Delete', 
         event_path(@event),
         :method => :delete,
         'data-method' => 'delete', 
         'data-confirm' => 'Are you sure?', 
-        :style => show_edit_and_delete(@event)
+        :style => show_edit_and_delete(@event),
+        :class => 'btn btn-secondary'
       %>
     </div>
     </div>

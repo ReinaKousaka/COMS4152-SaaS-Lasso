@@ -7,18 +7,16 @@ RSpec.describe Event, :type => :model do
         before :each do 
             Event.delete_all 
             Event.create({
-                :title => 'Films on Furnald: The Lion King', 
-                :category => "culture", 
-                :organizer => "Film Society", 
+                :title => 'Films on Furnald: The Lion King',
+                :category => "culture",
                 :user_id => 1,
                 :location => "Furnald Lawn", 
                 :start_time => DateTime.parse('30th October 20:00:00'),
                 :end_time => DateTime.parse('30th October 22:00:00')
             })
             Event.create({
-                :title => 'CS Coffee Chat', 
-                :category => "academic", 
-                :organizer => "CS Department", 
+                :title => 'CS Coffee Chat',
+                :category => "academic",
                 :user_id => 1,
                 :location => "CS Lounge", 
                 :start_time => DateTime.parse('28th October 14:00:00'),
@@ -26,9 +24,8 @@ RSpec.describe Event, :type => :model do
             })
 
             Event.create({
-                :title => 'Halloween Party', 
-                :category => "fun", 
-                :organizer => "Social Club", 
+                :title => 'Halloween Party',
+                :category => "fun",
                 :user_id => 1,
                 :location => "Lower Plaza", 
                 :start_time => DateTime.parse('31th October 19:00:00'),
@@ -78,18 +75,5 @@ RSpec.describe Event, :type => :model do
                 expect(sorted_events.last).to eq(Event.find_by(title: 'Halloween Party'))
             end
         end
-
-        describe 'event sort by organizer' do
-            it 'should return event sorted by Organizer' do
-                sort_by = 'organizer'
-                sorted_events = Event.with_sort(sort_by)
-                expect(sorted_events.first).to eq(Event.find_by(title: 'CS Coffee Chat'))
-                expect(sorted_events.last).to eq(Event.find_by(title: 'Halloween Party'))
-            end
-        end
-
     end
-
-
-
 end
