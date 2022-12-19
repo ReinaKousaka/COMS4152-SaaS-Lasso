@@ -210,7 +210,7 @@ RSpec.describe EventsController, type: :controller do
             Event.create({
                 :title => 'Varsity Football vs. UPenn', 
                 :category => 'athletics',
-                :user_id => user1.id,
+                :user_id => 1,
                 :start_time => DateTime.parse('15th November 14:00:00'),
                 :end_time => DateTime.parse('15th November 15:00:00')
             })
@@ -254,7 +254,11 @@ RSpec.describe EventsController, type: :controller do
         end
 
         describe 'GET events#search' do
-            #TODO: add more unit tests
+            it 'should filter the desired events' do
+                get :search, search_by: 'CS'
+
+                expect(assigns(:search_result).first.title).to eq('CS Coffee Chat')
+            end
         end
     end
 end

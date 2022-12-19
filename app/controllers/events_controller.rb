@@ -20,8 +20,8 @@ class EventsController < ApplicationController
 
     start_date = params.fetch(:start_date, Date.today).to_date
     @meetings = @events.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-    if session[:user_id]
-      @organizer = User.find(session[:user_id])
+    if current_user
+      @organizer = current_user
       @username = @organizer.organizer_name
       @sign_in_display = 'display:none'
       @sign_out_display = ''
@@ -152,17 +152,4 @@ class EventsController < ApplicationController
       return false
     end
   end
-
-    
-  def local_file_with_custom_params
-    file = file_params[:file]
-    file.original_filename = file_params[:filename] if file_params[:filename].present?
-    file.content_type = file_params[:mime_type] if file_params[:mime_type].present?
-    file
-  end
-
-  def file_params
-    params.require(:file).permit(:file, :mime_type, :filename, :store, :url)
-  end
-
 end

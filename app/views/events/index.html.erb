@@ -12,7 +12,14 @@
     <h2 style="color: white"> Lasso! - Stay in the Loop <ion-icon name="infinite" size="medium" color="secondary" class='mt-sm-1'></ion-icon></h2>
     <ul class="nav justify-content-end">
       <li class="nav-item mt-2">
-        <h5 style="color: white">Hi, <%=@username%></h5>
+        <h5 style="color: white">
+          <% if current_user %>
+            <span>Hi,</span>
+            <%= link_to @username, user_path(current_user) %>
+          <% else %>
+            <span>Hi, you need to sign in!</span>
+          <% end %>
+        </h5>
       </li>
       <li class="nav-item">
         <%= link_to 'Register', '/register', :class => 'btn btn-secondary ml-sm-3 mr-sm-2' %>
