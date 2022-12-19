@@ -18,6 +18,6 @@ class User < ApplicationRecord
   end
 
   def is_password?(raw)
-    BCrypt::Password.new(password_digest).is_password?(raw)
+    BCrypt::Password.new(self.password_digest).is_password?(raw)
   end
 end

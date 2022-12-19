@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :events
   root :to => redirect('/events')
   get '/search', to: 'events#search'
+  get '/upload', to: 'events#upload'
   
   get '/register', to: 'users#new'
   resources :users, only: [:create, :show, :edit, :update]
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'sessions#new'
   get '/sign_out', to: 'sessions#destroy'
   resource :sessions, only: [:create]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

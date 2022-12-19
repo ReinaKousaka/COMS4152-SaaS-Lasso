@@ -26,6 +26,19 @@
     </ul>
   </div>
 
+
+<div class="container-fluid mt-4 mb-2 ml-5">
+<div class="row mr-0">
+  <div class="col-1" style="max-width: 12rem; padding: 5px;">
+    <div class="card mb-0 ml-0 mr-0 border-none">
+      <div class="card-header">
+        <h5 class="text-center">Events Filter</h5>
+      </div>
+      <div class="card-body">
+        <%= form_tag events_path, method: :get, id: 'categories_form' do %>
+          <%= hidden_field_tag 'sort_by', @sort_by %>
+
+
   <% flash.each do |type, msg| %>
     <div class="alert alert-<%= type %>">
       <%= msg %>
@@ -57,6 +70,7 @@
         </div>
       </div>
     </div>
+
     
     <div class="col-7" style="padding: 5px;">
       <div class="row-8 mb-2">
@@ -93,7 +107,6 @@
           <% end %>
         </div>
       </div>
-
       <div class="card border-info mt-2">
         <div class="card-header">
           <ion-icon name="infinite" size="medium"></ion-icon> <em>Loop us in on an event!</em>

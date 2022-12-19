@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @event = Event.includes(:user).find params[:id]
   end
 
-  def index
+   def index
     @all_categories = Event.all_categories
     @events = Event.with_categories(categories_list, sort_by)
     @categories_to_show_hash = categories_hash
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
     start_date = params.fetch(:start_date, Date.today).to_date
     @meetings = @events.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-    if session['user_id'] 
+    if session[:user_id]
       @organizer = User.find(session[:user_id])
       @username = @organizer.organizer_name
       @sign_in_display = 'display:none'
@@ -95,6 +95,7 @@ class EventsController < ApplicationController
   end
 
 
+
   private
   def event_params
     params
@@ -150,6 +151,18 @@ class EventsController < ApplicationController
     else
       return false
     end
+  end
+
+    
+  def local_file_with_custom_params
+    file = file_params[:file]
+    file.original_filename = file_params[:filename] if file_params[:filename].present?
+    file.content_type = file_params[:mime_type] if file_params[:mime_type].present?
+    file
+  end
+
+  def file_params
+    params.require(:file).permit(:file, :mime_type, :filename, :store, :url)
   end
 
 end

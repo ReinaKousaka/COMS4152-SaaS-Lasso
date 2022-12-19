@@ -80,5 +80,19 @@ Then /^the field "(.+)" should be null/ do |field|
 end
 
 Then /^the field "(.+)" should be with error/ do |field|
-  expect(page).to have_content("#{field.capitalize} can't be blank")
+  expect(page).to have_content("Account information fields cannot be empty")
 end
+
+Then /I should see "(.*)" error messages/ do |field|
+  #  ensure that that e1 occurs before e2.
+  #  page.body is the entire content of the page as a string.
+  expect(page).to have_content("Password is too short!")
+end
+
+
+Then /^the number of search results of "(.*)" should be (.*)/ do |keyword, num|
+  @search_param = keyword.downcase
+  @search_result = Event.all.where("lower(title) LIKE :search", search:"%#{@search_param}%")
+  expect(@search_result.size).to eq num.to_i
+end
+

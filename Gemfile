@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 # Use simple calendar
 gem "simple_calendar", "~> 2.4"
+gem "uploadcare-ruby"
 
 # Adding and removing foreign key constraints
 gem 'foreigner'
