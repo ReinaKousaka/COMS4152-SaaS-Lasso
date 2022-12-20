@@ -51,14 +51,7 @@ RSpec.describe Event, :type => :model do
             end 
         end
 
-        describe 'return events if no categories are selected' do 
-            it 'should return all if no categories are selected' do 
-                categories = nil 
-                sort_by = "id"
-                interested_events = Event.with_categories(categories, sort_by)
-                expect(interested_events.count).to eq(3)
-            end 
-        end
+        
 
         describe 'event does not exist' do
             it 'handles sad path' do
@@ -67,13 +60,5 @@ RSpec.describe Event, :type => :model do
         end
 
 
-        describe 'event sort by start time' do
-            it 'should return event sorted by start time' do
-                sort_by = 'start_time'
-                sorted_events = Event.with_sort(sort_by)
-                expect(sorted_events.first).to eq(Event.find_by(title: 'CS Coffee Chat'))
-                expect(sorted_events.last).to eq(Event.find_by(title: 'Halloween Party'))
-            end
-        end
     end
 end

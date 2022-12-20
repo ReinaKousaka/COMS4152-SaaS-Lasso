@@ -62,11 +62,11 @@ When /^(?:|I )select datetime "([^ ]*) ([^ ]*) ([^ ]*) - ([^:]*):([^"]*)" as the
 end
 
 
-Then /I should see "(.*)" has been deleted/ do |event_name|
+#Then /I should see "(.*)" has been deleted/ do |event_name|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  expect(page).not_to have_content(event_name)
-end
+#  expect(page).not_to have_content(event_name)
+#end
 
  
 Then /^the field "(.+)" is empty/ do |field|
