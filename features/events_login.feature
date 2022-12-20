@@ -100,19 +100,13 @@ Background: events have been added to database
     When I go to the details page for "Christmas Holiday"
     When I press "Delete"
     And I should not see the following events: "Christmas Holiday"
-
-  Scenario: Edit an event without access
-    When I go to the edit page for "CS Coffee Chat"
-    And  I fill in "Title" with "Coffee Chat"
-    And  I press "Update event Info"
-    Then I should see "You are not the event organizer for this event."
-    And I should not see the following events: "Coffee Chat"
   
   Scenario: Search for event
     Given I am on the Lasso home page
     And  I fill in "search_by" with "Coffee"
     And I press "Search"
     Then the number of search results of "Coffee" should be 1
+
 
 
 
