@@ -7,10 +7,6 @@ class Event < ApplicationRecord
   end
 
   def self.with_categories(categories, sort_by)
-    
-      where(category: categories.map(&:downcase)).order sort_by
-    
+    where(category: categories.map(&:downcase)).order sort_by
   end
-
-  
 end

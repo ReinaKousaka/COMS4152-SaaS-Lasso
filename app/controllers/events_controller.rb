@@ -121,11 +121,10 @@ class EventsController < ApplicationController
   def require_login
     begin
       @event = Event.find params[:id]
-      if @event.user_id != session[:user_id]
-        flash[:warning] = "You are not the event organizer for this event."
-        # stay in the same page
-        redirect_to :back 
-      end
+      # no more needed because we disable the buttons when not login in as the correct user
+      # if @event.user_id != session[:user_id]
+      #   # redirect_to :back 
+      # end
     rescue Exception => e
       unless current_user
         flash[:warning] = "You must be logged in to an event organizer account."
