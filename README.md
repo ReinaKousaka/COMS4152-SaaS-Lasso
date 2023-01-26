@@ -1,5 +1,8 @@
 # Lasso
 
+### Overview
+This is the project for course [COMS4152: Engineering Software-as-a-Service](http://www.cs.columbia.edu/~junfeng/22fa-w4152/) at Columbia University
+
 ### Deployed App Link
 https://lasso-4152.herokuapp.com/
 
